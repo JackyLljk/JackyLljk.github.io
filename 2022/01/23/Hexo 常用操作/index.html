@@ -9,7 +9,7 @@
     
     <title>
         
-            归档: 2023/6 |
+            Hexo 常用操作 |
         
         JKey Blog
     </title>
@@ -115,7 +115,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 归档
@@ -185,7 +185,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives">归档</a>
                 </li>
             
@@ -215,48 +215,133 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Hexo 常用操作</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/dango_head.jpeg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">JKey</span>
+                            
+                                <span class="author-label">初</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
         
-<div class="archive-list-container">
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-01-23 12:40:09</span>
+        <span class="mobile">2022-01-23 12:40</span>
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2023</span>
-                <span class="archive-year-post-count">[1]</span>
-            </div>
-            <ul class="article-list">
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-06-23 10:34:59</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/06/23/Hello-MyBlog/"
-                        >新的开始</a>
-                        <span class="article-date">06-23</span>
+                    <li>
+                        <a href="/categories/tech/">tech</a>&nbsp;
                     </li>
                 
             </ul>
-        </section>
+        </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2022</span>
-                <span class="archive-year-post-count">[1]</span>
-            </div>
-            <ul class="article-list">
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/01/23/Hexo%20%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/"
-                        >Hexo 常用操作</a>
-                        <span class="article-date">01-23</span>
+                    <li>
+                        <a href="/tags/Hexo/">Hexo</a>&nbsp;
                     </li>
                 
             </ul>
-        </section>
+        </span>
+    
+
+    
+    
+    
     
 </div>
 
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h2 id="主题使用"><a href="#主题使用" class="headerlink" title="主题使用"></a>主题使用</h2><p><a class="link"   target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/" >使用 keep 主题<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/tutorial/configuration-guide/base_info.html" >主题更新 &#x2F; 样式设置<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://picx-docs.xpoet.cn/" >PicX 图床<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo new [postName]		# 在 source/_posts 下新建文章</span><br><span class="line">hexo new page [pageName]		# 在 source/pageName 下新建页面</span><br><span class="line">hexo d		# 将 .deploy 目录部署到 GitHub</span><br><span class="line">hexo g		# 生成静态页面至 public 目录</span><br><span class="line">hexo s		# 开启预览访问端口（默认 port：4000），ctrl + c 关闭 server</span><br><span class="line">hexo clean		# 清除所有静态页面和缓存数据</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 文章变量设置示例（置于<span class="emphasis">_posts下文章最上方）</span></span></span><br><span class="line"><span class="emphasis"><span class="section">---</span></span></span><br><span class="line"><span class="emphasis"><span class="section">title:	文章标题		</span></span></span><br><span class="line"><span class="emphasis"><span class="section">date: 2020-01-21 12:00:00</span></span></span><br><span class="line"><span class="emphasis"><span class="section">tags:	[tag1, tag2]</span></span></span><br><span class="line"><span class="emphasis"><span class="section">categories: [文章分类]</span></span></span><br><span class="line"><span class="emphasis"><span class="section">&#123;sricky:	权重值&#125;		# 文章置顶位置</span></span></span><br><span class="line"><span class="emphasis"><span class="section">&#123;toc:	false&#125;		# 关闭文章目录</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">---</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section"># 文章截取符</span></span></span><br><span class="line"><span class="emphasis"><span class="section">&lt;!--more--&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Hexo/">#Hexo</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/06/23/Hello-MyBlog/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">新的开始</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
     </div>
 </div>
+
 
                 
             </div>
@@ -296,6 +381,23 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -410,6 +512,20 @@
 
 
 <div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
     
 </div>
 
