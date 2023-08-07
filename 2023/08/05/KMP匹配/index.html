@@ -203,7 +203,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-08-07 08:46:45</span>
+        <span class="pc">2023-08-07 09:09:42</span>
     </span>
     
     
@@ -249,23 +249,23 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h2 id="KMP（字符串匹配）"><a href="#KMP（字符串匹配）" class="headerlink" title="KMP（字符串匹配）"></a>KMP（字符串匹配）</h2><blockquote>
+                <blockquote>
 <p>KMP 是由 Knuth，Morris，Pratt 三人设计的线性时间字符串匹配算法</p>
 </blockquote>
 <span id="more"></span>
 
 <p><a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/833/" >题目链接：831.KMP字符串<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line"> 	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span>(s[i+j<span class="number">-1</span>] != p[j])</span><br><span class="line">    &#123;</span><br><span class="line">      flag = <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line"> 	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span>(s[i+j<span class="number">-1</span>] != p[j])</span><br><span class="line">    &#123;</span><br><span class="line">      flag = <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="使用-KMP-优化"><a href="#使用-KMP-优化" class="headerlink" title="使用 KMP 优化"></a>使用 KMP 优化</h3><h4 id="用到的概念"><a href="#用到的概念" class="headerlink" title="用到的概念"></a>用到的概念</h4><p><code>s[]</code>：<strong>模式串</strong>，即被匹配的字符串</p>
+<h2 id="使用-KMP-优化"><a href="#使用-KMP-优化" class="headerlink" title="使用 KMP 优化"></a>使用 KMP 优化</h2><h3 id="用到的概念"><a href="#用到的概念" class="headerlink" title="用到的概念"></a>用到的概念</h3><p><code>s[]</code>：<strong>模式串</strong>，即被匹配的字符串</p>
 <p><code>p[]</code>：<strong>模板串</strong>，用模板串去匹配模式串</p>
 <p><strong>前缀</strong>：非平凡前缀，指除了最后一个字符外，一个字符串的全部头部组合</p>
 <p><strong>后缀</strong>：非平凡后缀，指除了第一个字符外，一个字符串的全部尾部组合</p>
 <p><strong>部分匹配值值</strong>：前缀和后缀的最长共有元素的长度</p>
 <p><code>next[]</code>数组：<strong>部分匹配值表</strong>，存储每一个下标对应的部分匹配值</p>
-<h4 id="next-数组详解"><a href="#next-数组详解" class="headerlink" title="next[] 数组详解"></a>next[] 数组详解</h4><p><code>next[]</code>数组是由对模板串（简称p串）预处理得到</p>
+<h3 id="next-数组详解"><a href="#next-数组详解" class="headerlink" title="next[] 数组详解"></a>next[] 数组详解</h3><p><code>next[]</code>数组是由对模板串（简称p串）预处理得到</p>
 <ul>
 <li><p><code>next[j]</code>表示<code>p[1,j]</code>的部分匹配值（<code>p[1,j]</code>串中前缀和后缀相同字符的最大长度）</p>
 </li>
@@ -275,7 +275,7 @@
 <p>​	<img  
                      lazyload
                      alt="image"
-                     data-src="../图片/image-20230805084949499.png"
+                     data-src="KMP匹配/image-20230805084949499.png"
                       alt="image-20230805084949499" style="zoom:50%;" 
                 ></p>
 <p><strong>求 next[] 数组过程</strong>：通过模板串自己与自己进行匹配得到（匹配过程类似KMP匹配）</p>
@@ -285,11 +285,11 @@
 
 
 
-<h4 id="KMP匹配过程"><a href="#KMP匹配过程" class="headerlink" title="KMP匹配过程"></a>KMP匹配过程</h4><p>这里 s串和 p串都是从下标1开始</p>
+<h3 id="KMP匹配过程"><a href="#KMP匹配过程" class="headerlink" title="KMP匹配过程"></a>KMP匹配过程</h3><p>这里 s串和 p串都是从下标1开始</p>
 <img  
                      lazyload
                      alt="image"
-                     data-src="../图片/image-20230805090500359.png"
+                     data-src="KMP匹配/image-20230805090500359.png"
                       alt="image-20230805090500359" style="zoom: 33%;" 
                 >	
 
@@ -306,8 +306,7 @@
 <h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>, M = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">char</span> p[N], s[M];</span><br><span class="line"><span class="type">int</span> ne[N];  <span class="comment">// next数组（以防当作保留字报错）</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; p + <span class="number">1</span> &gt;&gt; m &gt;&gt; s + <span class="number">1</span>;	<span class="comment">// &quot;+1&quot;表示下标从1开始</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 求next数组过程</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>, j = <span class="number">0</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(j &amp;&amp; p[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">        <span class="keyword">if</span>(p[i] == p[j + <span class="number">1</span>]) j++;</span><br><span class="line">        ne[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// kmp匹配过程</span></span><br><span class="line">     <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= m; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">while</span>(j &amp;&amp; s[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">         <span class="keyword">if</span>(s[i] == p[j + <span class="number">1</span>]) j++;</span><br><span class="line">         <span class="keyword">if</span>(j == n)</span><br><span class="line">         &#123;</span><br><span class="line">             <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, i - n);</span><br><span class="line">             j = ne[j];     </span><br><span class="line">         &#125;</span><br><span class="line">     &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>时间复杂度： O(N)</p>
-<p><strong>参考</strong></p>
-<ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a><strong>参考</strong></h2><ol>
 <li>题解：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/14666/" >KMP 字符串<i class="fas fa-external-link-alt"></i></a></li>
 <li>acwing 算法基础课（数据结构 (一) ）</li>
 </ol>
@@ -359,7 +358,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP%EF%BC%88%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">KMP（字符串匹配）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%B4%E5%8A%9B%E8%A7%A3%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">暴力解法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-KMP-%E4%BC%98%E5%8C%96"><span class="nav-number">1.2.</span> <span class="nav-text">使用 KMP 优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E5%88%B0%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">1.2.1.</span> <span class="nav-text">用到的概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#next-%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.2.2.</span> <span class="nav-text">next[] 数组详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KMP%E5%8C%B9%E9%85%8D%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.3.</span> <span class="nav-text">KMP匹配过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">完整代码</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9A%B4%E5%8A%9B%E8%A7%A3%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">暴力解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-KMP-%E4%BC%98%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">使用 KMP 优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E5%88%B0%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">用到的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#next-%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.2.</span> <span class="nav-text">next[] 数组详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KMP%E5%8C%B9%E9%85%8D%E8%BF%87%E7%A8%8B"><span class="nav-number">2.3.</span> <span class="nav-text">KMP匹配过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">2.4.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol>
     </div>
 </div>
 
