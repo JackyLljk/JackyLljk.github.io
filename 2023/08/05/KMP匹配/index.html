@@ -203,7 +203,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-08-07 09:09:42</span>
+        <span class="pc">2023-10-05 15:55:09</span>
     </span>
     
     
@@ -275,8 +275,8 @@
 <p>​	<img  
                      lazyload
                      alt="image"
-                     data-src="KMP匹配/image-20230805084949499.png"
-                      alt="image-20230805084949499" style="zoom:50%;" 
+                     data-src="https://p.ipic.vip/gp1qqe.png"
+                      style="zoom:50%;" 
                 ></p>
 <p><strong>求 next[] 数组过程</strong>：通过模板串自己与自己进行匹配得到（匹配过程类似KMP匹配）</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>, j = <span class="number">0</span>; i &lt;= n; i++)	<span class="comment">// 根据后缀定义，从第二个字符开始匹配</span></span><br><span class="line">&#123;</span><br><span class="line">  	<span class="keyword">while</span>(j &amp;&amp; p[i] != p[j + <span class="number">1</span>])	j = ne[j];</span><br><span class="line">  </span><br><span class="line">  	<span class="keyword">if</span>(p[i] == p[j+<span class="number">1</span>])	j++;	<span class="comment">// 下一个位置匹配成功，移动</span></span><br><span class="line">  </span><br><span class="line">  	ne[i] = j;	<span class="comment">// 当前长度的字符串匹配成功，记录已经匹配的长度（即前缀长度 = 后缀长度 = j）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -289,8 +289,8 @@
 <img  
                      lazyload
                      alt="image"
-                     data-src="KMP匹配/image-20230805090500359.png"
-                      alt="image-20230805090500359" style="zoom: 33%;" 
+                     data-src="https://p.ipic.vip/8ay4bi.png"
+                      style="zoom:33%;" 
                 >	
 
 <p>匹配过程如上图所示：</p>
