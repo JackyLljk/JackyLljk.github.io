@@ -203,7 +203,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-11-02 09:44:31</span>
+        <span class="pc">2023-12-11 15:25:21</span>
     </span>
     
     
@@ -249,13 +249,14 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <span id="more"></span>
+                <blockquote>
+<p>分治算法基本三部：1. 分成子问题；2. 递归处理子问题；3. 子问题合并</p>
+</blockquote>
+<p>快速排序和归并排序都是基于分治的思想</p>
+<span id="more"></span>
 
 <h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a><strong>算法思想</strong></h3><blockquote>
 <p>基于分治的思想：</p>
-</blockquote>
-<blockquote>
-<p>（分治算法基本三部：1. 分成子问题；2. 递归处理子问题；3. 子问题合并）</p>
 </blockquote>
 <ol>
 <li>确定分界点：左边界<code>q[l]</code>，中间值<code>q[(l+r)/2]</code>，右边界<code>q[r]</code>，也可以随机</li>
@@ -289,8 +290,8 @@
 
 <h3 id="如何得到递减序列？"><a href="#如何得到递减序列？" class="headerlink" title="如何得到递减序列？"></a><strong>如何得到递减序列？</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(i &lt; j)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &gt; x);	</span><br><span class="line">    <span class="comment">// 此处比较运算符更改一下，循环结果取得 q[i] &lt;= x</span></span><br><span class="line">    <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &lt; x);</span><br><span class="line">    <span class="keyword">if</span>(i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
+<p><strong>参考</strong>：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/introduction/11/" >acwing 算法基础课<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>例题</strong>：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/787/" >785. 快速排序<i class="fas fa-external-link-alt"></i></a></p>
 <h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><h3 id="算法思想-1"><a href="#算法思想-1" class="headerlink" title="算法思想"></a>算法思想</h3><blockquote>
 <p>基于分治的思想</p>
 </blockquote>
@@ -313,6 +314,7 @@
 
 
 <p><strong>参考课程</strong>：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/introduction/11/" >acwing 算法基础课<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>例题</strong>：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/789/" >787. 归并排序<i class="fas fa-external-link-alt"></i></a>	<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/790/" >788. 逆序对的数量<i class="fas fa-external-link-alt"></i></a></p>
 
             </div>
 
@@ -338,13 +340,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/08/05/KMP%E5%8C%B9%E9%85%8D/"
+                               href="/2023/06/27/%E4%BA%8C%E5%88%86/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">KMP字符串匹配</span>
+                                <span class="post-nav-title-item">二分法</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
