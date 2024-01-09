@@ -203,7 +203,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-01-09 16:04:46</span>
+        <span class="pc">2024-01-09 23:12:00</span>
     </span>
     
     
@@ -252,72 +252,96 @@
                 <blockquote>
 <p>Golang 启动!!!!!</p>
 </blockquote>
-<p><strong>参考博客</strong>：<a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/golang-menu/" >李文周-Go<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>参考博客</strong>：<a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/golang-menu/" >Go语言学习之路&#x2F;Go语言教程<i class="fas fa-external-link-alt"></i></a></p>
 <span id="more"></span>
 
-<h2 id="知识点大纲-x2F-要点"><a href="#知识点大纲-x2F-要点" class="headerlink" title="知识点大纲&#x2F;要点"></a>知识点大纲&#x2F;要点</h2><h4 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/var-and-const/" >变量和常量<i class="fas fa-external-link-alt"></i></a></h4><ol>
-<li>变量声明方式：标准声明，批量声明</li>
-<li>初始化（可以一次初始化&#x2F;赋值多个变量，<code>a, b = 4, 3.1415926</code>）</li>
-<li>类型推导</li>
-<li>短变量声明（<code>:=</code>，只能在函数内使用）【常用】</li>
-<li>匿名变量（<code>_</code>）</li>
-<li>常量（<code>const</code>，通常定义在全局）</li>
-<li><code>iota</code>常量计数器（跳过、插队、定义数量级、多个<code>iota</code>）</li>
+<h2 id="知识点大纲-x2F-要点"><a href="#知识点大纲-x2F-要点" class="headerlink" title="知识点大纲&#x2F;要点"></a>知识点大纲&#x2F;要点</h2><h3 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/var-and-const/" >变量和常量<i class="fas fa-external-link-alt"></i></a></h3><ol>
+<li><strong>变量声明方式</strong>：标准声明，批量声明</li>
+<li><strong>初始化</strong>（可以一次初始化&#x2F;赋值多个变量，<code>a, b = 4, 3.1415926</code>）</li>
+<li><strong>类型推导</strong></li>
+<li><strong>短变量声明</strong>（<code>:=</code>，只能在函数内使用）【常用】</li>
+<li><strong>匿名变量</strong>（<code>_</code>）</li>
+<li><strong>常量</strong>（<code>const</code>，通常定义在全局）</li>
+<li><strong><code>iota</code>常量计数器</strong>（跳过、插队、定义数量级、多个<code>iota</code>）</li>
 </ol>
-<h4 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/datatype/" >基本数据类型<i class="fas fa-external-link-alt"></i></a></h4><ol>
-<li>整型：有符号、无符号，特殊整型（不使用的情况） </li>
-<li>数字字面量：十进制、八进制（0开头，<code>%o</code>）、十六进制（0x开头，<code>%x</code>），二进制（十进制打印为二进制<code>%b</code>)</li>
-<li>浮点数：<code>float32</code>，<code>float64</code>（<code>%f</code>，<code>%.2f</code>）</li>
-<li>布尔值：默认<code>false</code>，不允许从整型强制转换，无法参与数值运算</li>
-<li>字符串：原生数据类型，<code>&quot;&quot;</code>内<ul>
+<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/datatype/" >基本数据类型<i class="fas fa-external-link-alt"></i></a></h3><ol>
+<li><strong>整型</strong>：有符号、无符号，特殊整型（不使用的情况） </li>
+<li><strong>数字字面量</strong>：十进制、八进制（0开头，<code>%o</code>）、十六进制（0x开头，<code>%x</code>），二进制（十进制打印为二进制<code>%b</code>)</li>
+<li><strong>浮点数</strong>：<code>float32</code>，<code>float64</code>（<code>%f</code>，<code>%.2f</code>）</li>
+<li><strong>布尔值</strong>：默认<code>false</code>，不允许从整型强制转换，无法参与数值运算</li>
+<li><strong>字符串</strong>：原生数据类型，<code>&quot;&quot;</code>内<ul>
 <li>字符串转义符</li>
 <li>多行字符串<code>&#39;&#39;</code>内</li>
 <li>修改字符串</li>
 <li>常用操作：<code>len(str)</code>，拼接<code>+</code>，分隔，<code>str.contains</code>，前后缀判断，子串位置（第一个下标），<code>join</code>操作</li>
 </ul>
 </li>
-<li>复数</li>
-<li>字符<code>byte</code>, <code>rune</code>：<code>&#39;&#39;</code>内，<code>%c</code></li>
-<li>强制类型转换<code>T()</code></li>
+<li><strong>复数</strong></li>
+<li><strong>字符</strong><code>byte</code>, <code>rune</code>：<code>&#39;&#39;</code>内，<code>%c</code></li>
+<li><strong>强制类型转换</strong>：<code>T()</code></li>
 </ol>
-<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/operators/" >运算符<i class="fas fa-external-link-alt"></i></a></h4><ol>
-<li>类似 C++</li>
-<li><code>--</code>，<code>++</code>是单独的一行语句</li>
+<h3 id="fmt"><a href="#fmt" class="headerlink" title="fmt"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/fmt/" >fmt<i class="fas fa-external-link-alt"></i></a></h3><ol>
+<li><p><strong>输出</strong>：</p>
+<ul>
+<li><p><code>Print</code>，<code>Printf</code>，<code>Println</code></p>
+</li>
+<li><p>写入文件：<code>Fprint</code></p>
+</li>
+<li><p>返回字符串：<code>Sprint</code></p>
+</li>
+<li><p><code>Eprint</code></p>
+</li>
+</ul>
+</li>
+<li><p><strong>格式化占位符</strong></p>
+</li>
+<li><p><strong>输入</strong>：</p>
+<ul>
+<li><code>Scan</code>，<code>Scanf</code>，<code>Scanln</code></li>
+<li><code>bufio.NewReader</code></li>
+<li><code>Fscan</code></li>
+<li><code>Sscan</code></li>
+</ul>
+</li>
 </ol>
-<h4 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/control-flow/" >流程控制<i class="fas fa-external-link-alt"></i></a></h4><ol>
-<li>if 条件判断，特殊写法（局部变量声明 + 判断）</li>
-<li>for 循环（省略初始和结束语句（类似<code>while</code>），无限循环）</li>
-<li><code>for range</code>键值循环</li>
-<li><code>switch case</code></li>
-<li><code>continue</code>，<code>break</code></li>
-<li><code>goto</code></li>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/operators/" >运算符<i class="fas fa-external-link-alt"></i></a></h3><ol>
+<li><strong>类似 C++</strong></li>
+<li><strong><code>--</code>，<code>++</code>是单独的一行语句</strong></li>
 </ol>
-<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/array/" >数组<i class="fas fa-external-link-alt"></i></a></h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a [元素数量]T	<span class="comment">// T：数据类型，数组大小不可变，不同元素数量的数组是不同的类型</span></span><br></pre></td></tr></table></figure>
+<h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/control-flow/" >流程控制<i class="fas fa-external-link-alt"></i></a></h3><ol>
+<li><strong>if 条件判断</strong>：特殊写法（局部变量声明 + 判断）</li>
+<li><strong>for 循环</strong>（省略初始和结束语句（类似<code>while</code>），无限循环）</li>
+<li><strong><code>for range</code>键值循环</strong></li>
+<li><strong><code>switch case</code></strong></li>
+<li><strong><code>continue</code>，<code>break</code></strong></li>
+<li><strong><code>goto</code></strong></li>
+</ol>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/array/" >数组<i class="fas fa-external-link-alt"></i></a></h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a [元素数量]T	<span class="comment">// T：数据类型，数组大小不可变，不同元素数量的数组是不同的类型</span></span><br></pre></td></tr></table></figure>
 
 <ol>
-<li><p>数组初始化：</p>
+<li><p><strong>数组初始化：</strong></p>
 <ul>
 <li>初始化列表<code>[2]string&#123;&quot;abc&quot;, &quot;bcd&quot;&#125;</code></li>
 <li>编译器推测长度<code>[...]bool&#123;&#125;</code></li>
 <li>索引值方式<code>a := [...]int&#123;1: 1, 3: 5&#125;</code></li>
 </ul>
 </li>
-<li><p>遍历数组：<code>len(array)</code>得到数组的长度</p>
+<li><p><strong>遍历数组</strong>：<code>len(array)</code>得到数组的长度</p>
 <ul>
 <li>for 循环遍历</li>
 <li>for range 循环遍历</li>
 </ul>
 </li>
-<li><p>二维数组及其遍历</p>
+<li><p><strong>二维数组及其遍历</strong></p>
 </li>
 </ol>
 <blockquote>
 <p>多维数组只有第一层可以使用<code>...</code>让编译器推测数组长度，内部的<code>&#123;&#125;</code>以<code>,</code>为结尾</p>
 </blockquote>
 <ol start="4">
-<li><strong>数组是值类型</strong>，赋值和传参会拷贝数组，改变副本不影响本身</li>
+<li><strong>数组是值类型</strong>：赋值和传参会拷贝数组，改变副本不影响本身</li>
 </ol>
-<h4 id="切片"><a href="#切片" class="headerlink" title="切片"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/slice/" >切片<i class="fas fa-external-link-alt"></i></a></h4><blockquote>
+<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/slice/" >切片<i class="fas fa-external-link-alt"></i></a></h3><blockquote>
 <p>切片是引用类型，基于数组做的一层封装，内部结构包含地址、长度size、容量cap</p>
 </blockquote>
 <ol>
@@ -333,34 +357,48 @@
 <p>  <code>cap = max - low</code>；<code>low</code>可以缺省为 0</p>
 </li>
 </ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a := [<span class="number">5</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">s := a[<span class="number">1</span>:<span class="number">4</span>]		<span class="comment">// &#123;2, 3, 4&#125;：左包含，右不包含</span></span><br><span class="line">s2 := s[<span class="number">1</span>:<span class="number">2</span>]	<span class="comment">// &#123;3&#125;</span></span><br><span class="line"><span class="comment">// 对切片再次切片时，high的上限变成被切切片的容量</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a := [<span class="number">5</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">s := a[<span class="number">1</span>:<span class="number">4</span>]		<span class="comment">// &#123;2, 3, 4&#125;：左包含，右不包含</span></span><br><span class="line">s1 := a[:]		<span class="comment">// 从头切到尾</span></span><br><span class="line">s2 := s[<span class="number">1</span>:<span class="number">2</span>]	<span class="comment">// &#123;3&#125;</span></span><br><span class="line"><span class="comment">// 对切片再次切片时，high的上限变成被切切片的容量</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>make 函数构造：<code>s := make([]T, size, cap)</code></li>
 </ul>
 <ol start="2">
-<li><code>len()</code>获得切片长度，<code>cap()</code>获得切片容量</li>
-<li>切片的本质</li>
-<li>切片不能直接比较，但<code>s == nil</code>表示切片没有底层数组</li>
+<li><strong><code>len()</code>获得切片长度，<code>cap()</code>获得切片容量</strong></li>
+<li><strong>切片的本质</strong></li>
+<li><strong>切片不能直接比较</strong>：<code>s == nil</code>表示切片没有底层数组</li>
 </ol>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同样长度、容量为0的切片</span></span><br><span class="line"><span class="keyword">var</span> s1 []<span class="type">int</span>	<span class="comment">// s1 == nil，没有申请内存，需要初始化</span></span><br><span class="line"><span class="keyword">var</span> s2 []<span class="type">int</span>&#123;&#125;	<span class="comment">// s2 != nil，已经初始化</span></span><br></pre></td></tr></table></figure>
 
 <ol start="5">
-<li><p>用<code>len(s)==0</code>判空</p>
+<li><p><strong>判空：</strong><code>len(s)==0</code></p>
 </li>
-<li><p>切片的赋值拷贝，切片赋值给切片后，二者公用一个底层数组</p>
+<li><p><strong>切片的赋值拷贝</strong>：切片赋值给切片后，二者公用一个底层数组</p>
 </li>
-<li><p>遍历切片（同数组）</p>
+<li><p><strong>遍历切片（同数组）</strong></p>
 </li>
-<li><p>动态添加元素：<code>s = append(s, 元素1, 元素2)</code>，底层数组容量不够时可以自动扩容（重新申请更大的一块内存）</p>
+<li><p><strong>动态添加元素：</strong><code>s = append(s, 元素1, 元素2)</code>，底层数组容量不够时可以自动扩容（重新申请更大的一块内存）</p>
 <p> 可以追加切片：<code>s1 = append(s1, s2...)</code></p>
+<blockquote>
+<p>! 扩容前后的内存地址是不同的</p>
+</blockquote>
 </li>
-<li><p>切片的扩容策略</p>
+<li><p><strong>切片的扩容策略</strong></p>
 </li>
-<li><p>使用<code>copy()</code>复制切片：<code>copy(s2, s1)</code>，s2 使用另一个切片空间</p>
+<li><p><strong>使用<code>copy()</code>复制切片</strong>：<code>copy(s2, s1)</code>，s2 使用另一个切片空间</p>
 </li>
-<li><p>从切片中删除元素：<code>s = append(s[:index], s[index+1:]...)</code></p>
+<li><p><strong>从切片中删除元素</strong>：<code>s = append(s[:index], s[index+1:]...)</code></p>
 </li>
+</ol>
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/map/" >map<i class="fas fa-external-link-alt"></i></a></h3><blockquote>
+<p>map 是无序的基于<code>key-value</code>的数据结构，是引用类型，初始化后才能使用</p>
+</blockquote>
+<ol>
+<li><p><strong>定义map</strong>：<code>map[keyType]valueType</code></p>
+<ul>
+<li>默认初始值为<code>nil</code>，<code>make(map[keyType]valueType, [cap])</code>分配内存</li>
+</ul>
+</li>
+<li></li>
 </ol>
 <h2 id="要点记录"><a href="#要点记录" class="headerlink" title="要点记录"></a>要点记录</h2><ul>
 <li>单行注释、多行注释（同 C++）</li>
@@ -374,7 +412,6 @@
 </ol>
 <p>在 Go 中，一个目录（文件夹）就是一个包，一个包只能有一个给定名称的函数（除了<code>init()</code>），不能在同一目录下出现多个同名函数</p>
 <ol start="2">
-<li><code>Println</code>, <code>Printf</code> 的使用</li>
 <li><img  
                      lazyload
                      alt="image"
@@ -430,7 +467,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E5%A4%A7%E7%BA%B2-x2F-%E8%A6%81%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">知识点大纲&#x2F;要点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F"><span class="nav-number">1.0.1.</span> <span class="nav-text">变量和常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.0.2.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.0.3.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">1.0.4.</span> <span class="nav-text">流程控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.0.5.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E7%89%87"><span class="nav-number">1.0.6.</span> <span class="nav-text">切片</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">要点记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95-x2F-%E5%BE%85%E8%A1%A5%E5%85%85"><span class="nav-number">3.</span> <span class="nav-text">问题记录&#x2F;待补充</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E5%A4%A7%E7%BA%B2-x2F-%E8%A6%81%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">知识点大纲&#x2F;要点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">变量和常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fmt"><span class="nav-number">1.3.</span> <span class="nav-text">fmt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">1.5.</span> <span class="nav-text">流程控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.6.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E7%89%87"><span class="nav-number">1.7.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map"><span class="nav-number">1.8.</span> <span class="nav-text">map</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">要点记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95-x2F-%E5%BE%85%E8%A1%A5%E5%85%85"><span class="nav-number">3.</span> <span class="nav-text">问题记录&#x2F;待补充</span></a></li></ol>
     </div>
 </div>
 
