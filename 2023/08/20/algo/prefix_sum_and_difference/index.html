@@ -203,7 +203,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-01-11 18:41:41</span>
+        <span class="pc">2024-01-12 01:32:33</span>
     </span>
     
     
@@ -263,40 +263,45 @@
 <ul>
 <li>消除边界情况的差异，一般使前缀和从 1 开始，而数组也从下标 1 开始</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前缀和的应用: 求数组 a 中从 l 到 r 的和</span></span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"><span class="type">int</span> s[N];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组 s 和 a 都是从下标 1 开始存放元素，即 1~n 存放元素</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)	</span><br><span class="line">    s[i] - s[i<span class="number">-1</span>] = a[i];	<span class="comment">// 前缀和初始化</span></span><br><span class="line"></span><br><span class="line">sum = s[r] - s[l<span class="number">-1</span>];		<span class="comment">// 区间和的计算</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模板：求数组 a 中从 l 到 r 的和</span></span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"><span class="type">int</span> s[N];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组 s 和 a 都是从下标 1 开始存放元素，即 1~n 存放元素</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)	</span><br><span class="line">    s[i] - s[i<span class="number">-1</span>] = a[i];	<span class="comment">// 前缀和初始化</span></span><br><span class="line"></span><br><span class="line">sum = s[r] - s[l<span class="number">-1</span>];		<span class="comment">// 区间和的计算</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="二维前缀和"><a href="#二维前缀和" class="headerlink" title="二维前缀和"></a>二维前缀和</h3><p>​	<img  
+<p>例题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/797/" >795. 前缀和<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="二维前缀和"><a href="#二维前缀和" class="headerlink" title="二维前缀和"></a>二维前缀和</h3><blockquote>
+<p><strong>用法</strong>：快速求出<strong>区域矩阵内的元素和</strong></p>
+</blockquote>
+<p><strong>求 <code>Sij</code></strong></p>
+<p><img  
                      lazyload
                      alt="image"
-                     data-src="C:\Users\bean\AppData\Roaming\Typora\typora-user-images\image-20230222195720402.png"
-                      alt="image-20230222195720402" style="zoom: 33%;" 
-                ></p>
-<p><strong><code>求 $S_&#123;ij&#125;</code></strong></p>
-<p>​	<img  
+                     data-src="https://jkey-imgs.oss-cn-nanjing.aliyuncs.com/2024-01-11-113000.png"
+                      alt="image-20240111192934654" style="zoom:33%;" 
+                >（方框内的点表示元素） </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt; m; j++)</span><br><span class="line">        s[i][j] = s[i<span class="number">-1</span>][j] + s[i][j<span class="number">-1</span>] - s[i<span class="number">-1</span>][j<span class="number">-1</span>] + a[i][j];</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>求区域和：</strong></p>
+<ul>
+<li>即整个区域减去两个矩形区域，再补上重复减去的区域</li>
+</ul>
+<img  
                      lazyload
                      alt="image"
-                     data-src="C:\Users\bean\AppData\Roaming\Typora\typora-user-images\image-20230222211030444.png"
-                      alt="image-20230222211030444" style="zoom: 25%;" 
-                >（方框内的点表示元素）</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt; m; j++)</span><br><span class="line">        s[i][j] = s[i<span class="number">-1</span>][j] - s[i][j<span class="number">-1</span>] + a[i][j]</span><br></pre></td></tr></table></figure>
+                     data-src="https://jkey-imgs.oss-cn-nanjing.aliyuncs.com/2024-01-11-113004.png"
+                      alt="image-20240111192901855" style="zoom: 33%;" 
+                >
 
-<p><strong>用法</strong>：快速求出区域矩阵内的元素和</p>
-<p><strong>求和</strong>：即整个区域减去两个矩形区域，再补上重复减去的区域</p>
-<p><code>sum = s[x2][y2] - s[x2][y1-1] - s[x1-1][y2] + s[x1-1][y1-1]</code></p>
-<p><strong>题目理解：</strong>子矩阵的和（模板）</p>
-<p>输入一个 n 行 m 列的整数矩阵，再输入四个整数 x1, y1, x2, y2，表示一个子矩阵的左上角左边和右下角坐标，输出子矩阵所有数的和。</p>
-<p>输入：n, m;</p>
-<p>​			接下来 n 行，每行包含 m 个整数，表示整数矩阵</p>
-<p>​			输入一行，包含四个整数 x1, y1, x2, y2</p>
-<p>输出：子矩阵所有数的和</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1001</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[N][N], s[N][N];</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; q;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//	接收数组的同时，得到二维前缀和</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i][j]);</span><br><span class="line">            s[i][j] = s[i<span class="number">-1</span>][j] + s[i][j<span class="number">-1</span>] - s[i<span class="number">-1</span>][j<span class="number">-1</span>] + a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> x1, y1, x2, y2, sum; </span><br><span class="line">    cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2;</span><br><span class="line">        </span><br><span class="line">    <span class="comment">// 二维前缀和求子矩阵，模板</span></span><br><span class="line">    sum = s[x2][y2] - s[x1<span class="number">-1</span>][y2] - s[x2][y1<span class="number">-1</span>] + s[x1<span class="number">-1</span>][y1<span class="number">-1</span>];</span><br><span class="line">        </span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sum = s[x2][y2] - s[x2][y1<span class="number">-1</span>] - s[x1<span class="number">-1</span>][y2] + s[x1<span class="number">-1</span>][y1<span class="number">-1</span>];</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模板：求(x1, y1)和(x2, y2)区域内元素的和</span></span><br><span class="line"><span class="type">int</span> a[N][N];</span><br><span class="line"><span class="type">int</span> s[N][N];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组 s 和 a 都是从下标 1 开始存放元素，即 1~n 存放元素</span></span><br><span class="line"><span class="comment">// 二维前缀和初始化</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">        s[i][j] = s[i][j<span class="number">-1</span>] + s[i<span class="number">-1</span>][j] - s[i<span class="number">-1</span>][j<span class="number">-1</span>] + a[i][j];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 求区域元素和</span></span><br><span class="line">sum = s[x2][y2] - s[x1<span class="number">-1</span>][y2] - s[x2][y1<span class="number">-1</span>] + s[x1<span class="number">-1</span>][y1<span class="number">-1</span>];</span><br></pre></td></tr></table></figure>
 
 
 
+<p>例题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/798/" >796. 子矩阵的和<i class="fas fa-external-link-alt"></i></a></p>
 <h2 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h2><blockquote>
 <p>差分是前缀和的逆运算</p>
 </blockquote>
-<h3 id="一维差分"><a href="#一维差分" class="headerlink" title="一维差分"></a>一维差分</h3><p><strong>差分定义：</strong></p>
+<h3 id="一维差分"><a href="#一维差分" class="headerlink" title="一维差分"></a>一维差分</h3><p><strong>差分定义</strong></p>
 <ol>
 <li><p>原数组：<code>a1, a2, a3, ..., an</code></p>
 </li>
@@ -305,20 +310,12 @@
 <li><p>使得：<code>ai = b1 + b2 + b3 + ... + bi</code></p>
 </li>
 </ol>
-<p>则 a 是 b 的前缀和，<strong>b 是 a 的差分</strong></p>
-<p><strong>用法</strong>：给区间<code>[l, r]</code>中的每个数加上<code>c</code>，求加后序列</p>
 <ul>
-<li>使得时间复杂度 **$O(1)$**（无需遍历）</li>
+<li>则 a 是 b 的前缀和，<strong>b 是 a 的差分</strong></li>
 </ul>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="C:\Users\bean\AppData\Roaming\Typora\typora-user-images\image-20230223200101153.png"
-                      alt="image-20230223200101153" style="zoom: 33%;" 
-                >	
-
+<p><strong>用法</strong>：给区间<code>[l, r]</code>中的每个数加上<code>c</code>，求加后序列，使得时间复杂度 <code>O(1)</code>（无需遍历）	</p>
 <ul>
-<li>综上，即只需修改<code>b[l]</code>和<code>b[r + 1 ]</code>即可求和-</li>
+<li>综上，即只需修改<code>b[l]</code>和<code>b[r+1]</code>即可求和-</li>
 </ul>
 <p><strong>理解:</strong> 初始数组可以看作是在区间<code>[1,1]</code>插入<code>a[i]</code>;</p>
 <p>​															<code>[2,2]</code>插入<code>a[2]</code>以此类推到<code>[n,n]</code>插入<code>a[n]</code></p>

@@ -203,7 +203,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-01-10 17:47:08</span>
+        <span class="pc">2024-01-12 06:28:41</span>
     </span>
     
     
@@ -395,13 +395,44 @@
 <h3 id="map"><a href="#map" class="headerlink" title="map"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/map/" >map<i class="fas fa-external-link-alt"></i></a></h3><blockquote>
 <p>map 是无序的基于<code>key-value</code>的数据结构，是引用类型，初始化后才能使用</p>
 </blockquote>
+<h4 id="map-的定义"><a href="#map-的定义" class="headerlink" title="map 的定义"></a>map 的定义</h4><blockquote>
+<p>推荐初始化map时直接指定容量，只有初始化map后才能继续后续操作</p>
+</blockquote>
 <ol>
-<li><p><strong>定义map</strong>：<code>map[keyType]valueType</code></p>
-<ul>
-<li>默认初始值为<code>nil</code>，<code>make(map[keyType]valueType, [cap])</code>分配内存</li>
+<li><strong>定义map</strong>：<code>map[keyType]valueType</code></li>
+<li><strong>初始化map：</strong>默认初始值为<code>nil</code>，<code>make(map[keyType]valueType, [cap])</code>分配内存</li>
+</ol>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><ol>
+<li><strong>添加键值对</strong></li>
+<li><strong>声明时填充元素</strong></li>
+<li><strong>判断是否存在某个键</strong>：<code>value, ok := map[key]</code>，<code>ok</code>为<code>bool</code>类型</li>
+<li><strong>遍历</strong>：<code>for range</code>遍历，可以同时遍历<code>key, value</code>也可以只遍历<code>key</code>（遍历顺序与添加顺序<strong>无关</strong>）</li>
+<li><strong>删除键值对：</strong><code>delete(map, key)</code></li>
+<li><strong>按指定顺序遍历</strong>：使用切片将<code>key</code>排序</li>
+<li><strong>元素为map的切片</strong>，<strong>值为切片的map</strong>：</li>
+</ol>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/function/" >函数<i class="fas fa-external-link-alt"></i></a></h3><h4 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> 函数名<span class="params">(参数)</span></span> 返回值 &#123;	<span class="comment">// 多个返回值需要用&quot;()&quot;包裹，&quot;,&quot;分隔</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><ol>
+<li><strong>类型简写</strong></li>
+<li><strong>可变（数量）参数</strong>：<code>x ...int</code>（是切片类型），可变参数放在最后</li>
+</ol>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><ol>
+<li><strong>多个返回值</strong>：也支持类型简写</li>
+<li><strong>返回值命名</strong>：在函数定义处定义返回值，不要忘了<code>return</code></li>
+<li><strong>返回</strong><code>nil</code></li>
+</ol>
+<h4 id="函数进阶"><a href="#函数进阶" class="headerlink" title="函数进阶"></a>函数进阶</h4><ol>
+<li><strong>作用域</strong></li>
+<li><strong>函数类型：</strong>类型为<code>func()</code>，可以作为变量使用（赋值给变量，<strong>作为另一个函数的参数</strong>，作为返回值）</li>
+<li><code>defer</code><strong>语句</strong>：延迟处理语句（类似栈），处理资源、文件、异常等</li>
+<li><strong>匿名函数</strong>：没有函数名<code>func(参数) (返回值) &#123;&#125;</code>，用于实现回调函数和闭包<ul>
+<li>赋值给变量</li>
+<li>立即执行</li>
 </ul>
 </li>
-<li></li>
+<li><strong>闭包</strong>：函数 + 外层变量的引用</li>
+<li><strong>内置函数</strong></li>
 </ol>
 <h2 id="要点记录"><a href="#要点记录" class="headerlink" title="要点记录"></a>要点记录</h2><ul>
 <li><p>单行注释、多行注释（同 C++）</p>
@@ -473,7 +504,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E5%A4%A7%E7%BA%B2-x2F-%E8%A6%81%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">知识点大纲&#x2F;要点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">变量和常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fmt"><span class="nav-number">1.3.</span> <span class="nav-text">fmt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">1.5.</span> <span class="nav-text">流程控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.6.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E7%89%87"><span class="nav-number">1.7.</span> <span class="nav-text">切片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E7%89%87%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">1.7.1.</span> <span class="nav-text">切片定义方式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E7%89%87%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.7.2.</span> <span class="nav-text">切片的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E7%89%87%E7%9A%84%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="nav-number">1.7.3.</span> <span class="nav-text">切片的其他操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map"><span class="nav-number">1.8.</span> <span class="nav-text">map</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">要点记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95-x2F-%E5%BE%85%E8%A1%A5%E5%85%85"><span class="nav-number">3.</span> <span class="nav-text">问题记录&#x2F;待补充</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E5%A4%A7%E7%BA%B2-x2F-%E8%A6%81%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">知识点大纲&#x2F;要点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">变量和常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fmt"><span class="nav-number">1.3.</span> <span class="nav-text">fmt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">1.5.</span> <span class="nav-text">流程控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.6.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E7%89%87"><span class="nav-number">1.7.</span> <span class="nav-text">切片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E7%89%87%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">1.7.1.</span> <span class="nav-text">切片定义方式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E7%89%87%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.7.2.</span> <span class="nav-text">切片的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E7%89%87%E7%9A%84%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="nav-number">1.7.3.</span> <span class="nav-text">切片的其他操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map"><span class="nav-number">1.8.</span> <span class="nav-text">map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#map-%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.8.1.</span> <span class="nav-text">map 的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%B3%95"><span class="nav-number">1.8.2.</span> <span class="nav-text">用法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.9.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="nav-number">1.9.1.</span> <span class="nav-text">定义函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">1.9.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-number">1.9.3.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6"><span class="nav-number">1.9.4.</span> <span class="nav-text">函数进阶</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">要点记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95-x2F-%E5%BE%85%E8%A1%A5%E5%85%85"><span class="nav-number">3.</span> <span class="nav-text">问题记录&#x2F;待补充</span></a></li></ol>
     </div>
 </div>
 
