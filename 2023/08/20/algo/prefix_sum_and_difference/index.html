@@ -203,7 +203,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-01-12 01:32:33</span>
+        <span class="pc">2024-01-12 06:33:11</span>
     </span>
     
     
@@ -274,7 +274,7 @@
                      lazyload
                      alt="image"
                      data-src="https://jkey-imgs.oss-cn-nanjing.aliyuncs.com/2024-01-11-113000.png"
-                      alt="image-20240111192934654" style="zoom:33%;" 
+                      alt="image-20240111192934654" style="zoom: 25%;" 
                 >（方框内的点表示元素） </p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt; m; j++)</span><br><span class="line">        s[i][j] = s[i<span class="number">-1</span>][j] + s[i][j<span class="number">-1</span>] - s[i<span class="number">-1</span>][j<span class="number">-1</span>] + a[i][j];</span><br></pre></td></tr></table></figure>
 
@@ -284,13 +284,12 @@
 <ul>
 <li>即整个区域减去两个矩形区域，再补上重复减去的区域</li>
 </ul>
-<img  
+<p>​	<img  
                      lazyload
                      alt="image"
-                     data-src="https://jkey-imgs.oss-cn-nanjing.aliyuncs.com/2024-01-11-113004.png"
-                      alt="image-20240111192901855" style="zoom: 33%;" 
-                >
-
+                     data-src="https://jkey-imgs.oss-cn-nanjing.aliyuncs.com/2024-01-11-223305.png"
+                      alt="2024-01-11-223136" style="zoom:25%;" 
+                ></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sum = s[x2][y2] - s[x2][y1<span class="number">-1</span>] - s[x1<span class="number">-1</span>][y2] + s[x1<span class="number">-1</span>][y1<span class="number">-1</span>];</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模板：求(x1, y1)和(x2, y2)区域内元素的和</span></span><br><span class="line"><span class="type">int</span> a[N][N];</span><br><span class="line"><span class="type">int</span> s[N][N];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组 s 和 a 都是从下标 1 开始存放元素，即 1~n 存放元素</span></span><br><span class="line"><span class="comment">// 二维前缀和初始化</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">        s[i][j] = s[i][j<span class="number">-1</span>] + s[i<span class="number">-1</span>][j] - s[i<span class="number">-1</span>][j<span class="number">-1</span>] + a[i][j];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 求区域元素和</span></span><br><span class="line">sum = s[x2][y2] - s[x1<span class="number">-1</span>][y2] - s[x2][y1<span class="number">-1</span>] + s[x1<span class="number">-1</span>][y1<span class="number">-1</span>];</span><br></pre></td></tr></table></figure>
