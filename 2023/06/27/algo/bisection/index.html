@@ -9,7 +9,7 @@
     
     <title>
         
-            算法技巧：加快读取速度 | 浮点数保留 | 字符串处理 |
+            二分法 |
         
         JKey Blog
     </title>
@@ -175,7 +175,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">算法技巧：加快读取速度 | 浮点数保留 | 字符串处理</span>
+                <span class="title-hover-animation">二分法</span>
             </div>
 
             
@@ -197,13 +197,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-06-24 23:20:00</span>
-        <span class="mobile">2023-06-24 23:20</span>
+        <span class="pc">2023-06-27 12:00:00</span>
+        <span class="mobile">2023-06-27 12:00</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-12-14 09:36:57</span>
+        <span class="pc">2023-12-14 17:04:05</span>
     </span>
     
     
@@ -250,47 +250,51 @@
                 
 
                 <blockquote>
-<p>选择高效的读入方式 | 浮点数处理 | 字符串处理</p>
+<p>二分的本质：在区间中找到满足某种性质的<strong>边界</strong>，使得区间二分为“不重叠”的两部分，每次选择答案所在的区间进行下一步处理，当区间长度为1时，即得到查找的答案（或可判断为无解）</p>
 </blockquote>
+<p>有单调性一定可以二分，没有单调性也可以二分（二分本质不是单调性）</p>
 <span id="more"></span>
 
-<h2 id="选择高效的读入方式"><a href="#选择高效的读入方式" class="headerlink" title="选择高效的读入方式"></a>选择高效的读入方式</h2><blockquote>
-<p><strong>经验</strong>：当输入比较多时，选择高效的读入方式</p>
+<h2 id="整数二分的两个模板"><a href="#整数二分的两个模板" class="headerlink" title="整数二分的两个模板"></a>整数二分的两个模板</h2><blockquote>
+<p>两个模板的区别主要是看 mid 属于左边，还是右边，属于右边时 mid &#x3D; (r + l + 1) &#x2F; 2！</p>
 </blockquote>
-<h4 id="1-选择printf-scanf，而非cout-cin"><a href="#1-选择printf-scanf，而非cout-cin" class="headerlink" title="1. 选择printf/scanf，而非cout/cin"></a>1. 选择<code>printf/scanf</code>，而非<code>cout/cin</code></h4><ul>
-<li>当 C++ 读读取大量数据时，使用前者甚至可以<strong>提速十倍</strong></li>
-<li>尤其是将<code>cin</code>替换为<code>scanf</code>，读取速度可以显著提高</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// printf 输出 用法</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;字符串&quot;</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;格式控制符1 输出控制符2...&quot;</span>，输出参数<span class="number">1</span>，输出参数<span class="number">2</span>,...);</span><br><span class="line"><span class="comment">// 格式控制符，输出参数的个数一一对应</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;格式控制符 非输出控制符&quot;</span>, 输出参数);</span><br><span class="line"></span><br><span class="line"><span class="comment">// scanf 输入 用法</span></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;格式控制符&quot;</span>, &amp;输入参数);	<span class="comment">// 不要忘记&quot;&amp;&quot;</span></span><br><span class="line">	<span class="comment">// 变量前有 &amp; 表明“放到以变量的地址为地址的变量中”</span></span><br></pre></td></tr></table></figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://jkey-imgs.oss-cn-nanjing.aliyuncs.com/2023-12-14-090355.png"
+                      alt="image-20231211150712625" style="zoom:20%;" 
+                >
 
-<h4 id="2-优化cout-cin"><a href="#2-优化cout-cin" class="headerlink" title="2. 优化cout/cin"></a>2. 优化<code>cout/cin</code></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在main函数内添加如下代码之一</span></span><br><span class="line">ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);	<span class="comment">// code1</span></span><br><span class="line"></span><br><span class="line">cin.<span class="built_in">tie</span>(<span class="number">0</span>);	<span class="comment">// code2</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Java 用<code>buffread</code>，而非<code>Scanner</code></li>
-</ul>
-<h2 id="浮点数处理"><a href="#浮点数处理" class="headerlink" title="浮点数处理"></a>浮点数处理</h2><p><strong>经验</strong>：保留 k 位小数，精度下探两位</p>
-<p><strong>用法</strong>：使用<code>cout</code>输出，保留固定位数的小数</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 写法一 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span>	<span class="comment">// 需要使用的头文件</span></span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="built_in">setiosflags</span>(ios::fixed) &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">6</span>) &lt;&lt; a &lt;&lt; endl;</span><br><span class="line"><span class="comment">// 输出保留6位小数的变量a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 写法二 */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%.6lf&quot;</span>, a);		<span class="comment">// 更简洁</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用scanf输入double</span></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%lf&quot;</span>, &amp;a);	</span><br></pre></td></tr></table></figure>
+<h3 id="模板一：mid-属于左区间"><a href="#模板一：mid-属于左区间" class="headerlink" title="模板一：mid 属于左区间"></a>模板一：mid 属于左区间</h3><p>区间<code>[l, r]</code>被划分成<code>[l, mid]</code>和<code>[mid + 1, r]</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 检查x是否满足某种性质</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">bsearch_1</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;		<span class="comment">// 找中间值 (l+r)/2</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// check()判断 mid 是否满足性质</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(mid)) 			</span><br><span class="line">            r = mid;    	<span class="comment">// 满足（该情况下左区域包含 mid）</span></span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            l = mid + <span class="number">1</span>;	<span class="comment">// 不满足（从 mid 下一个位置）</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;	<span class="comment">// 最后 l == r，跳出循环</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// substr() 字符串指定长度复制</span></span><br><span class="line">str.<span class="built_in">substr</span>(pos, len)</span><br><span class="line"><span class="comment">// 返回值 string，包含str中从pos开始的len个字符的拷贝</span></span><br><span class="line"><span class="comment">// pos 的默认值为 0，len 的默认值为 s.size() - pos（默认拷贝整个字符串）</span></span><br></pre></td></tr></table></figure>
+<h3 id="模板二：mid-属于右区间"><a href="#模板二：mid-属于右区间" class="headerlink" title="模板二：mid 属于右区间"></a>模板二：mid 属于右区间</h3><p>区间<code>[l, r]</code>被划分成<code>[l, mid - 1]</code>和<code>[mid, r]</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 检查x是否满足某种性质</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">bsearch_2</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 补 +1，当 l = r-1 时，确保不会死循环（两个模板的主要区分点）</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(mid)) </span><br><span class="line">            l = mid;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            r = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>语法题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/74/" >左旋转字符串<i class="fas fa-external-link-alt"></i></a></p>
-<p>语法题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/83/" >把字符串转换成整数<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>经验</strong>：</p>
+
+
+<h3 id="整数二分重要思想"><a href="#整数二分重要思想" class="headerlink" title="整数二分重要思想"></a><strong>整数二分重要思想</strong></h3><blockquote>
+<p>有序数列，查找 — 选取二分法</p>
+</blockquote>
 <ol>
-<li>字符类型的<code>0</code>对应于 ASCII 码<code>48</code>，获得整数需要<code>-&#39;0&#39;</code></li>
-<li>字符数组存储的元素是数字的判断语句</li>
+<li>先写 <code>check()</code> 函数</li>
+<li>根据 <code>check(mid)</code> 判断 mid 的值在<code>左 / 右</code>区间，选取模板</li>
+<li>如果无解，记得满足题意</li>
 </ol>
-<p><code>str[k] &gt;= &#39;0&#39; &amp;&amp; str[k] &lt;= &#39;9&#39;</code></p>
-<ol start="3">
-<li>可以用<code>1e11</code>为界限判断<code>int</code>类型是否越界</li>
-<li>当结果可能超出范围时，选取更大的类型，并返回时进行强制转换</li>
-</ol>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><strong>技巧</strong>：输入括号后，再输入右括号，可以直接跳出括号而不使用方向键</p>
+<p>例题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/791/" >789. 数的范围<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="浮点数二分"><a href="#浮点数二分" class="headerlink" title="浮点数二分"></a>浮点数二分</h2><blockquote>
+<p>浮点数二分不需要区分边界，每次都是严格取得中间值</p>
+</blockquote>
+<ul>
+<li>当最终区间范围足够小时，可认为取得最终答案</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">double</span> x)</span> </span>&#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 检查x是否满足某种性质</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">bsearch_3</span><span class="params">(<span class="type">double</span> l, <span class="type">double</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">double</span> eps = <span class="number">1e-6</span>;    <span class="comment">// eps 表示精度，取决于题目对精度的要求</span></span><br><span class="line">    							<span class="comment">// 一般是题目要求的精度下探两位</span></span><br><span class="line">    <span class="keyword">while</span> (r - l &gt; eps)			<span class="comment">// 也可以是循环 100 次</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">double</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(mid)) </span><br><span class="line">            r = mid;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            l = mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/blog/content/277/" >模板链接<i class="fas fa-external-link-alt"></i></a></p>
 
             </div>
 
@@ -316,13 +320,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/06/24/%E6%8E%92%E5%BA%8F/"
+                               href="/2023/08/05/algo/kmp/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">快速排序 | 归并排序</span>
+                                <span class="post-nav-title-item">KMP字符串匹配</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
@@ -332,10 +336,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/06/23/Hello-MyBlog/"
+                               href="/2023/06/24/algo/algo_skills/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">寻找目标</span>
+                                <span class="post-nav-title-item">算法技巧：加快读取速度 | 浮点数保留 | 字符串处理</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -354,7 +358,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%AB%98%E6%95%88%E7%9A%84%E8%AF%BB%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">选择高效的读入方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%89%E6%8B%A9printf-scanf%EF%BC%8C%E8%80%8C%E9%9D%9Ecout-cin"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 选择printf&#x2F;scanf，而非cout&#x2F;cin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BC%98%E5%8C%96cout-cin"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 优化cout&#x2F;cin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">浮点数处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">字符串处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E4%BA%8C%E5%88%86%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">整数二分的两个模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E4%B8%80%EF%BC%9Amid-%E5%B1%9E%E4%BA%8E%E5%B7%A6%E5%8C%BA%E9%97%B4"><span class="nav-number">1.1.</span> <span class="nav-text">模板一：mid 属于左区间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E4%BA%8C%EF%BC%9Amid-%E5%B1%9E%E4%BA%8E%E5%8F%B3%E5%8C%BA%E9%97%B4"><span class="nav-number">1.2.</span> <span class="nav-text">模板二：mid 属于右区间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E4%BA%8C%E5%88%86%E9%87%8D%E8%A6%81%E6%80%9D%E6%83%B3"><span class="nav-number">1.3.</span> <span class="nav-text">整数二分重要思想</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BA%8C%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">浮点数二分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol>
     </div>
 </div>
 

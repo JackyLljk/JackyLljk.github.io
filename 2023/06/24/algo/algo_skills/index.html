@@ -9,7 +9,7 @@
     
     <title>
         
-            寻找目标 |
+            算法技巧：加快读取速度 | 浮点数保留 | 字符串处理 |
         
         JKey Blog
     </title>
@@ -175,7 +175,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">寻找目标</span>
+                <span class="title-hover-animation">算法技巧：加快读取速度 | 浮点数保留 | 字符串处理</span>
             </div>
 
             
@@ -197,13 +197,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-06-23 10:00:00</span>
-        <span class="mobile">2023-06-23 10:00</span>
+        <span class="pc">2023-06-24 23:20:00</span>
+        <span class="mobile">2023-06-24 23:20</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-12-11 15:20:29</span>
+        <span class="pc">2023-12-14 09:36:57</span>
     </span>
     
     
@@ -212,7 +212,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>&nbsp;
+                        <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>&nbsp;
                     </li>
                 
             </ul>
@@ -224,7 +224,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E7%BB%8F%E5%8E%86/">经历</a>&nbsp;
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
                     </li>
                 
             </ul>
@@ -245,8 +249,48 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <p>叹当下：昨夜西风凋碧树，独上高楼，望尽天涯路。</p>
-<p>愿未来：衣带渐宽终不悔，为伊消得人憔悴。</p>
+                <blockquote>
+<p>选择高效的读入方式 | 浮点数处理 | 字符串处理</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="选择高效的读入方式"><a href="#选择高效的读入方式" class="headerlink" title="选择高效的读入方式"></a>选择高效的读入方式</h2><blockquote>
+<p><strong>经验</strong>：当输入比较多时，选择高效的读入方式</p>
+</blockquote>
+<h4 id="1-选择printf-scanf，而非cout-cin"><a href="#1-选择printf-scanf，而非cout-cin" class="headerlink" title="1. 选择printf/scanf，而非cout/cin"></a>1. 选择<code>printf/scanf</code>，而非<code>cout/cin</code></h4><ul>
+<li>当 C++ 读读取大量数据时，使用前者甚至可以<strong>提速十倍</strong></li>
+<li>尤其是将<code>cin</code>替换为<code>scanf</code>，读取速度可以显著提高</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// printf 输出 用法</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;字符串&quot;</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;格式控制符1 输出控制符2...&quot;</span>，输出参数<span class="number">1</span>，输出参数<span class="number">2</span>,...);</span><br><span class="line"><span class="comment">// 格式控制符，输出参数的个数一一对应</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;格式控制符 非输出控制符&quot;</span>, 输出参数);</span><br><span class="line"></span><br><span class="line"><span class="comment">// scanf 输入 用法</span></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;格式控制符&quot;</span>, &amp;输入参数);	<span class="comment">// 不要忘记&quot;&amp;&quot;</span></span><br><span class="line">	<span class="comment">// 变量前有 &amp; 表明“放到以变量的地址为地址的变量中”</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-优化cout-cin"><a href="#2-优化cout-cin" class="headerlink" title="2. 优化cout/cin"></a>2. 优化<code>cout/cin</code></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在main函数内添加如下代码之一</span></span><br><span class="line">ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);	<span class="comment">// code1</span></span><br><span class="line"></span><br><span class="line">cin.<span class="built_in">tie</span>(<span class="number">0</span>);	<span class="comment">// code2</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Java 用<code>buffread</code>，而非<code>Scanner</code></li>
+</ul>
+<h2 id="浮点数处理"><a href="#浮点数处理" class="headerlink" title="浮点数处理"></a>浮点数处理</h2><p><strong>经验</strong>：保留 k 位小数，精度下探两位</p>
+<p><strong>用法</strong>：使用<code>cout</code>输出，保留固定位数的小数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 写法一 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span>	<span class="comment">// 需要使用的头文件</span></span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="built_in">setiosflags</span>(ios::fixed) &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">6</span>) &lt;&lt; a &lt;&lt; endl;</span><br><span class="line"><span class="comment">// 输出保留6位小数的变量a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 写法二 */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%.6lf&quot;</span>, a);		<span class="comment">// 更简洁</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用scanf输入double</span></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%lf&quot;</span>, &amp;a);	</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// substr() 字符串指定长度复制</span></span><br><span class="line">str.<span class="built_in">substr</span>(pos, len)</span><br><span class="line"><span class="comment">// 返回值 string，包含str中从pos开始的len个字符的拷贝</span></span><br><span class="line"><span class="comment">// pos 的默认值为 0，len 的默认值为 s.size() - pos（默认拷贝整个字符串）</span></span><br></pre></td></tr></table></figure>
+
+<p>语法题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/74/" >左旋转字符串<i class="fas fa-external-link-alt"></i></a></p>
+<p>语法题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/83/" >把字符串转换成整数<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>经验</strong>：</p>
+<ol>
+<li>字符类型的<code>0</code>对应于 ASCII 码<code>48</code>，获得整数需要<code>-&#39;0&#39;</code></li>
+<li>字符数组存储的元素是数字的判断语句</li>
+</ol>
+<p><code>str[k] &gt;= &#39;0&#39; &amp;&amp; str[k] &lt;= &#39;9&#39;</code></p>
+<ol start="3">
+<li>可以用<code>1e11</code>为界限判断<code>int</code>类型是否越界</li>
+<li>当结果可能超出范围时，选取更大的类型，并返回时进行强制转换</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><strong>技巧</strong>：输入括号后，再输入右括号，可以直接跳出括号而不使用方向键</p>
 
             </div>
 
@@ -256,7 +300,11 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/%E7%BB%8F%E5%8E%86/">#经历</a>&nbsp;
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -268,13 +316,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/06/24/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A71/"
+                               href="/2023/06/27/algo/bisection/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">算法技巧：加快读取速度 | 浮点数保留 | 字符串处理</span>
+                                <span class="post-nav-title-item">二分法</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
@@ -284,10 +332,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2022/01/23/Hexo%20%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/"
+                               href="/2023/06/24/algo/sort/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Hexo 常用操作</span>
+                                <span class="post-nav-title-item">快速排序 | 归并排序</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -302,6 +350,15 @@
             
         </div>
 
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%AB%98%E6%95%88%E7%9A%84%E8%AF%BB%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">选择高效的读入方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%89%E6%8B%A9printf-scanf%EF%BC%8C%E8%80%8C%E9%9D%9Ecout-cin"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 选择printf&#x2F;scanf，而非cout&#x2F;cin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BC%98%E5%8C%96cout-cin"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 优化cout&#x2F;cin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">浮点数处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">字符串处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
         
     </div>
 </div>
