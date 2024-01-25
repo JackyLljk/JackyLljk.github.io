@@ -9,7 +9,7 @@
     
     <title>
         
-            分类: 数据结构与算法 |
+            位运算 |
         
         JKey Blog
     </title>
@@ -78,7 +78,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/categories"
                             >
                                 分类
@@ -136,7 +136,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/categories">分类</a>
                 </li>
             
@@ -171,98 +171,186 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="category-container">
-        <div class="category-name">
-            <i class="fas fa-folder"></i>&nbsp;数据结构与算法
-        </div>
-        <div class="category-post-list">
-            
-<div class="archive-list-container">
-    
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2023</span>
-                <span class="archive-year-post-count">[9]</span>
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">位运算</span>
             </div>
-            <ul class="article-list">
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/dango_head.jpeg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">JKey</span>
+                            
+                                <span class="author-label">情有独钟</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-11-01 12:00:00</span>
+        <span class="mobile">2023-11-01 12:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-01-25 09:52:33</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/11/01/algo/bitwise_operation/"
-                        >位运算</a>
-                        <span class="article-date">11-01</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/11/01/algo/count_of_range_sum/"
-                        >区间和</a>
-                        <span class="article-date">11-01</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/09/10/algo/two_pointers/"
-                        >双指针</a>
-                        <span class="article-date">09-10</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/08/20/algo/prefix_sum_and_difference/"
-                        >前缀和 | 差分</a>
-                        <span class="article-date">08-20</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/08/15/algo/high_accuracy/"
-                        >高精度</a>
-                        <span class="article-date">08-15</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/08/05/algo/kmp/"
-                        >KMP字符串匹配</a>
-                        <span class="article-date">08-05</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/06/27/algo/bisection/"
-                        >二分法</a>
-                        <span class="article-date">06-27</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/06/24/algo/algo_skills/"
-                        >算法技巧：加快读取速度 | 浮点数保留 | 字符串处理</a>
-                        <span class="article-date">06-24</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/06/24/algo/sort/"
-                        >快速排序 | 归并排序</a>
-                        <span class="article-date">06-24</span>
+                    <li>
+                        <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>&nbsp;
                     </li>
                 
             </ul>
-        </section>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
     
 </div>
 
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p><strong>两个问题与一个补充</strong></p>
+<ol>
+<li>x 的二进制表示中第 k 位是多少</li>
+<li>统计 x 二进制表示中 1 的个数</li>
+<li>原码、补码、反码</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><h3 id="模板1：n-的二进制表示中第-k-位是几"><a href="#模板1：n-的二进制表示中第-k-位是几" class="headerlink" title="模板1：n 的二进制表示中第 k 位是几"></a>模板1：n 的二进制表示中第 k 位是几</h3><blockquote>
+<p>从个位起，个位为第 0 位</p>
+</blockquote>
+<ol>
+<li>先把第 k 位移到最后一位（右移 k）</li>
+<li>看个位是几（与 1）</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; (n &gt;&gt; k &amp; <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="模板2：lowbit-x-，统计x中1的个数"><a href="#模板2：lowbit-x-，统计x中1的个数" class="headerlink" title="模板2：lowbit(x)，统计x中1的个数"></a>模板2：lowbit(x)，统计x中1的个数</h3><p>**lowbit(x)**：返回 x 的最后一位 1 之后的二进制数（二进制，即最右边）</p>
+<ul>
+<li>例如：x &#x3D; 10100，lowbit(x) &#x3D; 100</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 整数的负数是补码（~x+1 取反加一）</span></span><br><span class="line"><span class="comment">// -x = ~x+1</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lowbit</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; -x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从最低位开始循环消除最后一位1，同时统计消除的次数，即得到二进制x中1的个数</span></span><br><span class="line">x -= <span class="built_in">lowbit</span>(x);</span><br></pre></td></tr></table></figure>
+
+<p>例题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/803/" >801. 二进制中1的个数<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="知识点补充：原码、反码、补码"><a href="#知识点补充：原码、反码、补码" class="headerlink" title="知识点补充：原码、反码、补码"></a>知识点补充：原码、反码、补码</h2><p>原码：<code>0...01010</code></p>
+<p>反码：<code>1...10101</code></p>
+<p>补码：<code>1...10110</code>（~x+1）</p>
+<h3 id="一种解释"><a href="#一种解释" class="headerlink" title="一种解释"></a>一种解释</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x + (-x) = 0</span><br><span class="line">-x = 0 - x</span><br><span class="line">   = 0...0 - x</span><br><span class="line">   = 10...0 - x（从更高位借1）</span><br><span class="line">   = ~x + 1</span><br></pre></td></tr></table></figure>
+
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/11/27/language/basic_go/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Go 基础学习</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/11/01/algo/count_of_range_sum/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">区间和</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
         </div>
-    </div>
-    <div class="category-paginator">
-        <div class="paginator">
-    
 
-    
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF1%EF%BC%9An-%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA%E4%B8%AD%E7%AC%AC-k-%E4%BD%8D%E6%98%AF%E5%87%A0"><span class="nav-number">1.1.</span> <span class="nav-text">模板1：n 的二进制表示中第 k 位是几</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF2%EF%BC%9Alowbit-x-%EF%BC%8C%E7%BB%9F%E8%AE%A1x%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">模板2：lowbit(x)，统计x中1的个数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%A1%A5%E5%85%85%EF%BC%9A%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">知识点补充：原码、反码、补码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E7%A7%8D%E8%A7%A3%E9%87%8A"><span class="nav-number">2.1.</span> <span class="nav-text">一种解释</span></a></li></ol></li></ol>
+    </div>
 </div>
 
+            </div>
+        
     </div>
 </div>
 
@@ -305,6 +393,23 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -403,6 +508,14 @@
 
 
 <div class="post-scripts pjax">
+    
+        <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
     
 </div>
 
