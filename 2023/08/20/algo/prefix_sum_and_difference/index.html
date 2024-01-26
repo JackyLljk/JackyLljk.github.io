@@ -203,7 +203,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-01-19 12:36:08</span>
+        <span class="pc">2024-01-26 19:20:03</span>
     </span>
     
     
@@ -320,13 +320,12 @@
 <li>已知数组<code>b[n]</code>，求新的数组<code>a[1], ..., a[l]+c, a[l+1]+c, ...a[r]+c, a[r+1], ...,a[n]</code></li>
 </ul>
 <p><strong>方法</strong>：只需修改：<code>b[l]+c</code>和<code>b[r+1]-c</code>即可求和</p>
-<img  
+<p><img  
                      lazyload
                      alt="image"
-                     data-src="https://jkey-imgs.oss-cn-nanjing.aliyuncs.com/2024-01-19-042202.png"
-                      style="zoom: 15%;" 
-                >
-
+                     data-src="https://jkey-imgs.oss-cn-nanjing.aliyuncs.com/2024-01-26-111953.png"
+                     
+                ></p>
 <ol>
 <li>修改<code>b[l]</code>为<code>b[l]+c</code>：使得<code>a</code>数组变为<code>a[1], ..., a[l]+c, a[l+1]+c, ..., a[n]+c</code></li>
 <li>修改<code>b[r+1]</code>为<code>b[r+1]-c</code>：使得<code>a</code>数组从<code>a[r+1]</code>开始删掉加上的<code>c</code></li>
@@ -342,13 +341,12 @@
 <p>例题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/799/" >797. 差分<i class="fas fa-external-link-alt"></i></a></p>
 <h3 id="二维差分"><a href="#二维差分" class="headerlink" title="二维差分"></a>二维差分</h3><h4 id="使用差分矩阵"><a href="#使用差分矩阵" class="headerlink" title="使用差分矩阵"></a>使用差分矩阵</h4><p>逆向二维前缀和，原矩阵<code>a[i][j]</code>，差分矩阵<code>b[i][j]</code>，原矩阵是差分矩阵的前缀和</p>
 <p><strong>用法</strong>：给子矩阵的每个元素加上常数 c，输出更改后的矩阵（时间复杂度达到 <code>O(1)</code>）</p>
-<img  
+<p><img  
                      lazyload
                      alt="image"
-                     data-src="https://jkey-imgs.oss-cn-nanjing.aliyuncs.com/2024-01-19-042108.png"
-                      style="zoom: 33%;" 
-                >
-
+                     data-src="https://jkey-imgs.oss-cn-nanjing.aliyuncs.com/2024-01-26-111755.png"
+                     
+                ></p>
 <ol>
 <li>修改<code>b[x1][y1]+c</code>，使得<code>b[x1][y1]</code>到<code>b[xn][yn]</code>都加上<code>c</code></li>
 <li>修改<code>b[x1][y2+1]-c</code>、<code>b[x2+1][y1]-c</code>，使内部蓝色矩形以外的减去<code>c</code></li>
