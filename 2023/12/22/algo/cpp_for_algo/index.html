@@ -9,7 +9,7 @@
     
     <title>
         
-            算法技巧：加快读取速度 | 浮点数保留 | 字符串处理 |
+            面向算法的 Cpp 用法 |
         
         JKey Blog
     </title>
@@ -175,7 +175,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">算法技巧：加快读取速度 | 浮点数保留 | 字符串处理</span>
+                <span class="title-hover-animation">面向算法的 Cpp 用法</span>
             </div>
 
             
@@ -197,13 +197,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-06-24 23:20:00</span>
-        <span class="mobile">2023-06-24 23:20</span>
+        <span class="pc">2023-12-22 12:00:00</span>
+        <span class="mobile">2023-12-22 12:00</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-12-14 09:36:57</span>
+        <span class="pc">2024-01-26 16:34:25</span>
     </span>
     
     
@@ -231,6 +231,14 @@
                         | <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
                     </li>
                 
+                    <li>
+                        | <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/C/">C++</a>&nbsp;
+                    </li>
+                
             </ul>
         </span>
     
@@ -250,24 +258,23 @@
                 
 
                 <blockquote>
-<p>选择高效的读入方式 | 浮点数处理 | 字符串处理</p>
+<p>求解算法题需要用到的那些 Cpp 语法</p>
 </blockquote>
 <span id="more"></span>
 
 <h2 id="选择高效的读入方式"><a href="#选择高效的读入方式" class="headerlink" title="选择高效的读入方式"></a>选择高效的读入方式</h2><blockquote>
 <p><strong>经验</strong>：当输入比较多时，选择高效的读入方式</p>
 </blockquote>
-<h4 id="1-选择printf-scanf，而非cout-cin"><a href="#1-选择printf-scanf，而非cout-cin" class="headerlink" title="1. 选择printf/scanf，而非cout/cin"></a>1. 选择<code>printf/scanf</code>，而非<code>cout/cin</code></h4><ul>
+<h3 id="选择printf-scanf，而非cout-cin"><a href="#选择printf-scanf，而非cout-cin" class="headerlink" title="选择printf/scanf，而非cout/cin"></a>选择<code>printf/scanf</code>，而非<code>cout/cin</code></h3><ul>
 <li>当 C++ 读读取大量数据时，使用前者甚至可以<strong>提速十倍</strong></li>
 <li>尤其是将<code>cin</code>替换为<code>scanf</code>，读取速度可以显著提高</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// printf 输出 用法</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;字符串&quot;</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;格式控制符1 输出控制符2...&quot;</span>，输出参数<span class="number">1</span>，输出参数<span class="number">2</span>,...);</span><br><span class="line"><span class="comment">// 格式控制符，输出参数的个数一一对应</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;格式控制符 非输出控制符&quot;</span>, 输出参数);</span><br><span class="line"></span><br><span class="line"><span class="comment">// scanf 输入 用法</span></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;格式控制符&quot;</span>, &amp;输入参数);	<span class="comment">// 不要忘记&quot;&amp;&quot;</span></span><br><span class="line">	<span class="comment">// 变量前有 &amp; 表明“放到以变量的地址为地址的变量中”</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="2-优化cout-cin"><a href="#2-优化cout-cin" class="headerlink" title="2. 优化cout/cin"></a>2. 优化<code>cout/cin</code></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在main函数内添加如下代码之一</span></span><br><span class="line">ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);	<span class="comment">// code1</span></span><br><span class="line"></span><br><span class="line">cin.<span class="built_in">tie</span>(<span class="number">0</span>);	<span class="comment">// code2</span></span><br></pre></td></tr></table></figure>
+<h3 id="优化cout-cin"><a href="#优化cout-cin" class="headerlink" title="优化cout/cin"></a>优化<code>cout/cin</code></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在main函数内添加如下代码之一</span></span><br><span class="line">ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);	<span class="comment">// code1</span></span><br><span class="line"></span><br><span class="line">cin.<span class="built_in">tie</span>(<span class="number">0</span>);	<span class="comment">// code2</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>Java 用<code>buffread</code>，而非<code>Scanner</code></li>
-</ul>
+
+
 <h2 id="浮点数处理"><a href="#浮点数处理" class="headerlink" title="浮点数处理"></a>浮点数处理</h2><p><strong>经验</strong>：保留 k 位小数，精度下探两位</p>
 <p><strong>用法</strong>：使用<code>cout</code>输出，保留固定位数的小数</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 写法一 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span>	<span class="comment">// 需要使用的头文件</span></span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="built_in">setiosflags</span>(ios::fixed) &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">6</span>) &lt;&lt; a &lt;&lt; endl;</span><br><span class="line"><span class="comment">// 输出保留6位小数的变量a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 写法二 */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%.6lf&quot;</span>, a);		<span class="comment">// 更简洁</span></span><br></pre></td></tr></table></figure>
@@ -290,7 +297,28 @@
 <li>可以用<code>1e11</code>为界限判断<code>int</code>类型是否越界</li>
 <li>当结果可能超出范围时，选取更大的类型，并返回时进行强制转换</li>
 </ol>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><strong>技巧</strong>：输入括号后，再输入右括号，可以直接跳出括号而不使用方向键</p>
+<h2 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><ul>
+<li>vector 类似数组，但可以<code>动态扩展</code>（找更大的内存空间，将原数组拷贝，释放原空间）</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用法</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span>	<span class="comment">// 头文件</span></span></span><br><span class="line"></span><br><span class="line">vector&lt;T&gt; v;	<span class="comment">// 模板实现</span></span><br><span class="line">v.<span class="built_in">empty</span>();		<span class="comment">// 判空</span></span><br><span class="line">v.<span class="built_in">size</span>();		<span class="comment">// 返回元素个数</span></span><br><span class="line"></span><br><span class="line">v.<span class="built_in">push_back</span>(elem);		<span class="comment">// 尾部插入元素 elem</span></span><br><span class="line">v.<span class="built_in">pop_back</span>();			<span class="comment">// 删除最后一个元素</span></span><br><span class="line">v.<span class="built_in">clear</span>();				<span class="comment">// 清空</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以用”[] + 下标“操纵容器</span></span><br><span class="line"></span><br><span class="line">v.<span class="built_in">front</span>();	<span class="comment">// 返回容器第一个元素</span></span><br><span class="line">v.<span class="built_in">back</span>();	<span class="comment">// 返回容器最后一个元素</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>使用技巧</strong></p>
+<ol>
+<li>在创建 vector 时如果没有指定长度，则 vector 中不存在任何元素，无法被读取</li>
+<li>仅当 vector 某位置已经存在元素时，才可以使用下标进行操作</li>
+<li>使用<code>v.size()</code>获取大小时，返回的类型为<code>unsigned int</code></li>
+</ol>
+<p><strong>理解 resize() 和 reserve()</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/liuweiyuxiang/article/details/88692708" >https://blog.csdn.net/liuweiyuxiang/article/details/88692708<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="pair"><a href="#pair" class="headerlink" title="pair"></a>pair</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将两个数据组成一组数据</span></span><br><span class="line">pair&lt;T1, T2&gt; p;</span><br><span class="line">p.first;	<span class="comment">// 返回第一个值</span></span><br><span class="line">p.second;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;T1, T2&gt; PII;	<span class="comment">// 简化声明</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用<code>sort()</code>进行排序时，首先以左端点进行排序，仍然相同的话再以右端点进行排序</li>
+</ul>
+<h2 id="常用辅助函数"><a href="#常用辅助函数" class="headerlink" title="常用辅助函数"></a>常用辅助函数</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span>	<span class="comment">// 算法头文件</span></span></span><br><span class="line"></span><br><span class="line">std::<span class="built_in">max</span>(a, b);			<span class="comment">// 返回参数 a 和 b 的最大值</span></span><br><span class="line">std::<span class="built_in">min</span>(a, b);			<span class="comment">// 返回参数 a 和 b 的最小值</span></span><br><span class="line">std::<span class="built_in">swap</span>(a, b);		<span class="comment">// 交换参数 a 和 b 的值</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span>	<span class="comment">// 头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">pow</span>(<span class="number">4</span>, <span class="number">2</span>);		<span class="comment">// 4 的平方</span></span><br><span class="line"><span class="built_in">sqrt</span>(<span class="number">4</span>);		<span class="comment">// 4 开方</span></span><br><span class="line"><span class="built_in">abs</span>(b-a);		<span class="comment">// 绝对值</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">reverse</span>(first, last);	<span class="comment">// 反转 [first，last) 范围内元素的顺序</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>&#125;;</span><br><span class="line"><span class="built_in">reverse</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());	<span class="comment">// v = &#123;1,2,3,4,5&#125;</span></span><br><span class="line">string str = <span class="string">&quot;www.mathor.top&quot;</span>;</span><br><span class="line"><span class="built_in">reverse</span>(str.<span class="built_in">begin</span>(), str.<span class="built_in">end</span>());	<span class="comment">// str = &quot;pot.rohtam.wwww&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// begin(), end() 函数，可用于 string，vector,...</span></span><br><span class="line">v.<span class="built_in">begin</span>();	<span class="comment">// 返回指向首个元素的指针</span></span><br><span class="line">v.<span class="built_in">end</span>();	<span class="comment">// 返回指向最后一个元素“之后位置”的指针</span></span><br></pre></td></tr></table></figure>
+
 
             </div>
 
@@ -307,6 +335,14 @@
                             <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>&nbsp;
                         </li>
                     
+                        <li class="tag-item">
+                            <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">#编程语言</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/C/">#C++</a>&nbsp;
+                        </li>
+                    
                 </ul>
             
 
@@ -316,13 +352,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/06/27/algo/bisection/"
+                               href="/2023/12/23/cs/OS/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">二分法</span>
+                                <span class="post-nav-title-item">搞定操作系统</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
@@ -332,10 +368,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/06/24/algo/sort/"
+                               href="/2023/11/27/language/basic_go/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">快速排序 | 归并排序</span>
+                                <span class="post-nav-title-item">Go 基础学习</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -354,7 +390,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%AB%98%E6%95%88%E7%9A%84%E8%AF%BB%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">选择高效的读入方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%89%E6%8B%A9printf-scanf%EF%BC%8C%E8%80%8C%E9%9D%9Ecout-cin"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 选择printf&#x2F;scanf，而非cout&#x2F;cin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BC%98%E5%8C%96cout-cin"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 优化cout&#x2F;cin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">浮点数处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">字符串处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%AB%98%E6%95%88%E7%9A%84%E8%AF%BB%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">选择高效的读入方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9printf-scanf%EF%BC%8C%E8%80%8C%E9%9D%9Ecout-cin"><span class="nav-number">1.1.</span> <span class="nav-text">选择printf&#x2F;scanf，而非cout&#x2F;cin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96cout-cin"><span class="nav-number">1.2.</span> <span class="nav-text">优化cout&#x2F;cin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">浮点数处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">字符串处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">常用数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vector"><span class="nav-number">4.1.</span> <span class="nav-text">vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pair"><span class="nav-number">4.2.</span> <span class="nav-text">pair</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">常用辅助函数</span></a></li></ol>
     </div>
 </div>
 

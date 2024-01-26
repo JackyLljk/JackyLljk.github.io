@@ -9,7 +9,7 @@
     
     <title>
         
-            区间和 |
+            标签: C++ |
         
         JKey Blog
     </title>
@@ -86,7 +86,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class=""
+                            <a class="active"
                                href="/tags"
                             >
                                 标签
@@ -141,7 +141,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class=""
+                    <a class="active"
                        href="/tags">标签</a>
                 </li>
             
@@ -171,195 +171,42 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="post-page-container">
-        <div class="article-content-container">
-
-            <div class="article-title">
-                <span class="title-hover-animation">区间和</span>
-            </div>
-
-            
-                <div class="article-header">
-                    <div class="avatar">
-                        <img src="/images/dango_head.jpeg">
-                    </div>
-                    <div class="info">
-                        <div class="author">
-                            <span class="name">JKey</span>
-                            
-                                <span class="author-label">情有独钟</span>
-                            
-                        </div>
-                        <div class="meta-info">
-                            
-<div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        
-            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
-        
-        <span class="pc">2023-11-01 12:00:00</span>
-        <span class="mobile">2023-11-01 12:00</span>
-    </span>
-    
-        <span class="article-update-date article-meta-item">
-        <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-01-25 09:54:16</span>
-    </span>
-    
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-    
-    
-</div>
-
-                        </div>
-                    </div>
-                </div>
-            
-
-            <div class="article-content keep-markdown-body">
-                
-
-                <span id="more"></span>
-
-<h2 id="离散化"><a href="#离散化" class="headerlink" title="离散化"></a>离散化</h2><p><strong>离散化</strong>：把较大值域内的 n 个数映射到各自对应的下标</p>
-<p>特点：值域大，个数少</p>
-<p>常见问题：（数组<code>a[]</code>内有 n 个值，且数组有序）</p>
-<ol>
-<li>数组中有重复的元素（去重）</li>
-<li>算出<code>ai</code>映射后的值（二分）</li>
-</ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; alls;</span><br><span class="line"><span class="built_in">sort</span>(alls.<span class="built_in">begin</span>(), alls.<span class="built_in">end</span>());</span><br><span class="line">alls.<span class="built_in">erase</span>(<span class="built_in">unique</span>(alls.<span class="built_in">begin</span>(), alls.<span class="built_in">end</span>()), <span class="built_in">alls</span>(end));</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="区间合并"><a href="#区间合并" class="headerlink" title="区间合并"></a>区间合并</h2><p><strong>题型</strong></p>
-<ol>
-<li><p>给定 n 个区间 $[li,ri]$，要求合并所有有交集的区间</p>
-</li>
-<li><p>注意如果在端点处相交，也算有交集</p>
-</li>
-<li><p>输出合并完成后的区间个数</p>
-</li>
-</ol>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/805/" >区间合并<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>思路</strong></p>
-<ol>
-<li>按区间左端点排序</li>
-<li>以左端点为基准，区间有交集时分为以下三种情况</li>
-</ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; PII;		<span class="comment">// 用 pair 分别存放左右端点</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">vector&lt;PII&gt; segs;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(vector&lt;PII&gt; &amp;segs)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> l, r;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">        segs.<span class="built_in">push_back</span>(l, r);</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="built_in">merge</span>(segs);</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; segs.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </div>
-
-            
-
-            
-                <ul class="post-tags-box">
-                    
-                        <li class="tag-item">
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            
-
-            
-                <div class="article-nav">
-                    
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2023/11/01/algo/bitwise_operation/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">位运算</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            </a>
-                        </div>
-                    
-                    
-                        <div class="article-next">
-                            <a class="next"
-                               rel="next"
-                               href="/2023/09/10/algo/two_pointers/"
-                            >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">双指针</span>
-                                <span class="post-nav-item">下一篇</span>
-                            </span>
-                                <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                            </a>
-                        </div>
-                    
-                </div>
-            
-
-            
+    <div class="tag-container">
+        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;C++
         </div>
-
-        
-            <div class="toc-content-container">
-                <div class="post-toc-wrap">
-    <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">离散化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6"><span class="nav-number">2.</span> <span class="nav-text">区间合并</span></a></li></ol>
-    </div>
+        <div class="tag-post-list">
+            
+<div class="archive-list-container">
+    
+        <section class="archive-item">
+            <div class="archive-item-header">
+                <span class="archive-year">2023</span>
+                <span class="archive-year-post-count">[1]</span>
+            </div>
+            <ul class="article-list">
+                
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2023/12/22/algo/cpp_for_algo/"
+                        >面向算法的 Cpp 用法</a>
+                        <span class="article-date">12-22</span>
+                    </li>
+                
+            </ul>
+        </section>
+    
 </div>
 
-            </div>
-        
+        </div>
+    </div>
+
+    <div class="tag-paginator">
+        <div class="paginator">
+    
+
+    
+</div>
+
     </div>
 </div>
 
@@ -402,23 +249,6 @@
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -517,14 +347,6 @@
 
 
 <div class="post-scripts pjax">
-    
-        <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
-        
-            <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
-        
-        
-            <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
-        
     
 </div>
 
