@@ -203,7 +203,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-01-26 16:34:25</span>
+        <span class="pc">2024-02-26 10:54:06</span>
     </span>
     
     
@@ -283,7 +283,7 @@
 
 
 
-<h2 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// substr() 字符串指定长度复制</span></span><br><span class="line">str.<span class="built_in">substr</span>(pos, len)</span><br><span class="line"><span class="comment">// 返回值 string，包含str中从pos开始的len个字符的拷贝</span></span><br><span class="line"><span class="comment">// pos 的默认值为 0，len 的默认值为 s.size() - pos（默认拷贝整个字符串）</span></span><br></pre></td></tr></table></figure>
+<h2 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h2><h3 id="字符串处理函数"><a href="#字符串处理函数" class="headerlink" title="字符串处理函数"></a>字符串处理函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// substr() 字符串指定长度复制</span></span><br><span class="line">str.<span class="built_in">substr</span>(pos, len)</span><br><span class="line"><span class="comment">// 返回值 string，包含str中从pos开始的len个字符的拷贝</span></span><br><span class="line"><span class="comment">// pos 的默认值为 0，len 的默认值为 s.size() - pos（默认拷贝整个字符串）</span></span><br></pre></td></tr></table></figure>
 
 <p>语法题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/74/" >左旋转字符串<i class="fas fa-external-link-alt"></i></a></p>
 <p>语法题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/83/" >把字符串转换成整数<i class="fas fa-external-link-alt"></i></a></p>
@@ -297,7 +297,18 @@
 <li>可以用<code>1e11</code>为界限判断<code>int</code>类型是否越界</li>
 <li>当结果可能超出范围时，选取更大的类型，并返回时进行强制转换</li>
 </ol>
-<h2 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><ul>
+<h3 id="字符串与字符数组"><a href="#字符串与字符数组" class="headerlink" title="字符串与字符数组"></a>字符串与字符数组</h3><p><strong>字符串类型</strong>：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/ksws0292756/article/details/79432329" >https://blog.csdn.net/ksws0292756/article/details/79432329<i class="fas fa-external-link-alt"></i></a></p>
+<ol>
+<li><code>string</code></li>
+<li><code>char*</code>：指向字符串首个字母的指针</li>
+<li><code>char[]</code></li>
+</ol>
+<h2 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h2><h3 id="最大最小值"><a href="#最大最小值" class="headerlink" title="最大最小值"></a>最大最小值</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 最大最小int</span></span><br><span class="line"><span class="type">int</span> a = INT_MIN;</span><br><span class="line"><span class="type">int</span> b = INT_MAX;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><ul>
 <li>vector 类似数组，但可以<code>动态扩展</code>（找更大的内存空间，将原数组拷贝，释放原空间）</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用法</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span>	<span class="comment">// 头文件</span></span></span><br><span class="line"></span><br><span class="line">vector&lt;T&gt; v;	<span class="comment">// 模板实现</span></span><br><span class="line">v.<span class="built_in">empty</span>();		<span class="comment">// 判空</span></span><br><span class="line">v.<span class="built_in">size</span>();		<span class="comment">// 返回元素个数</span></span><br><span class="line"></span><br><span class="line">v.<span class="built_in">push_back</span>(elem);		<span class="comment">// 尾部插入元素 elem</span></span><br><span class="line">v.<span class="built_in">pop_back</span>();			<span class="comment">// 删除最后一个元素</span></span><br><span class="line">v.<span class="built_in">clear</span>();				<span class="comment">// 清空</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以用”[] + 下标“操纵容器</span></span><br><span class="line"></span><br><span class="line">v.<span class="built_in">front</span>();	<span class="comment">// 返回容器第一个元素</span></span><br><span class="line">v.<span class="built_in">back</span>();	<span class="comment">// 返回容器最后一个元素</span></span><br></pre></td></tr></table></figure>
@@ -368,10 +379,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/11/27/language/basic_go/"
+                               href="/2023/12/10/algo/disjoint_set/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Go 基础学习</span>
+                                <span class="post-nav-title-item">并查集</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -390,7 +401,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%AB%98%E6%95%88%E7%9A%84%E8%AF%BB%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">选择高效的读入方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9printf-scanf%EF%BC%8C%E8%80%8C%E9%9D%9Ecout-cin"><span class="nav-number">1.1.</span> <span class="nav-text">选择printf&#x2F;scanf，而非cout&#x2F;cin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96cout-cin"><span class="nav-number">1.2.</span> <span class="nav-text">优化cout&#x2F;cin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">浮点数处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">字符串处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">常用数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vector"><span class="nav-number">4.1.</span> <span class="nav-text">vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pair"><span class="nav-number">4.2.</span> <span class="nav-text">pair</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">常用辅助函数</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%AB%98%E6%95%88%E7%9A%84%E8%AF%BB%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">选择高效的读入方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9printf-scanf%EF%BC%8C%E8%80%8C%E9%9D%9Ecout-cin"><span class="nav-number">1.1.</span> <span class="nav-text">选择printf&#x2F;scanf，而非cout&#x2F;cin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96cout-cin"><span class="nav-number">1.2.</span> <span class="nav-text">优化cout&#x2F;cin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">浮点数处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">字符串处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">字符串处理函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="nav-number">3.2.</span> <span class="nav-text">字符串与字符数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">常用数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="nav-number">4.1.</span> <span class="nav-text">最大最小值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vector"><span class="nav-number">4.2.</span> <span class="nav-text">vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pair"><span class="nav-number">4.3.</span> <span class="nav-text">pair</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">常用辅助函数</span></a></li></ol>
     </div>
 </div>
 

@@ -203,7 +203,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-02-25 16:30:02</span>
+        <span class="pc">2024-02-27 17:16:58</span>
     </span>
     
     
@@ -299,7 +299,39 @@
 <li>DELETE 删除资源</li>
 </ul>
 <p>可以使用Postman作为客户端的测试工具</p>
-<h4 id="Gin渲染"><a href="#Gin渲染" class="headerlink" title="Gin渲染"></a>Gin渲染</h4><h3 id="Go-标准库之http-x2F-template"><a href="#Go-标准库之http-x2F-template" class="headerlink" title="Go 标准库之http&#x2F;template"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/template/" >Go 标准库之http&#x2F;template<i class="fas fa-external-link-alt"></i></a></h3><h4 id="使用模板引擎"><a href="#使用模板引擎" class="headerlink" title="使用模板引擎"></a>使用模板引擎</h4><ol>
+<h4 id="Gin渲染"><a href="#Gin渲染" class="headerlink" title="Gin渲染*"></a>Gin渲染*</h4><blockquote>
+<p>目前使用 gin 模板渲染其实较少</p>
+</blockquote>
+<ol>
+<li>HTML 渲染：<code>LoadHTMLGlob()</code>，<code>LoadHTMLFilhues()</code></li>
+<li>自定义模板函数<code>router.SetFuncMap()</code></li>
+<li>静态文件处理：在解析前添加<code>gin.Static</code>解析静态文件（html, css, js, 图片等）</li>
+<li>使用模板继承</li>
+<li>JSON 渲染：返回<code>JSON</code>格式数据，使用map&#x2F;gin.H&#x2F;结构体<ul>
+<li>使用结构体渲染时，内部字段要大写（反射）（可以使用tag定制）</li>
+</ul>
+</li>
+<li>XML 渲染、YAML 渲染</li>
+<li>protobuf 渲染</li>
+</ol>
+<h4 id="获取参数"><a href="#获取参数" class="headerlink" title="获取参数"></a>获取参数</h4><blockquote>
+<p>一个请求对应一个响应</p>
+</blockquote>
+<ol>
+<li><strong>获取<code>querystring</code>参数</strong>：使用<code>&amp;</code>连接多个query参数</li>
+</ol>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/Users/jk/Desktop/Coding/myblog/source/_posts/language/assets/image-20240227130923681.png"
+                      alt="image-20240227130923681"
+                ></p>
+<ol start="2">
+<li><strong>获取<code>form</code>参数</strong>：使用<code>r.POST()</code>处理浏览器页面表单的请求动作</li>
+<li><strong>获取<code>path/url</code>参数</strong></li>
+<li></li>
+</ol>
+<h3 id="Go-标准库之http-x2F-template"><a href="#Go-标准库之http-x2F-template" class="headerlink" title="Go 标准库之http&#x2F;template"></a><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/template/" >Go 标准库之http&#x2F;template<i class="fas fa-external-link-alt"></i></a></h3><h4 id="使用模板引擎"><a href="#使用模板引擎" class="headerlink" title="使用模板引擎"></a>使用模板引擎</h4><ol>
 <li>定义模板文件</li>
 <li>解析模板文件</li>
 <li>模板渲染</li>
@@ -326,6 +358,9 @@
 </ul>
 <h2 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h2><ol>
 <li>创建模板<code>New()</code>操作有什么用？</li>
+<li>any 是什么类型？</li>
+<li>了解反射的原理！</li>
+<li>tag中的 form&#x2F;json</li>
 </ol>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/apple_51931783/article/details/127805320" >使用VS code快速搭建一个Golang项目<i class="fas fa-external-link-alt"></i></a></p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/golang-menu/" >Go语言学习之路&#x2F;Go语言教程<i class="fas fa-external-link-alt"></i></a></p>
@@ -354,13 +389,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2024/02/21/life_plan/study_plan/"
+                               href="/2024/01/30/language/plus_go/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item"></span>
+                                <span class="post-nav-title-item">Go 要点理解</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
@@ -392,7 +427,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Go-Web"><span class="nav-number">1.</span> <span class="nav-text">Go Web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.1.</span> <span class="nav-text">vscode 新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#About-Web"><span class="nav-number">1.2.</span> <span class="nav-text">About Web</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">快速搭建一个简单的服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gin-%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">Gin 框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gin-%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">Gin 框架介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RESTful-%E6%9E%B6%E6%9E%84%EF%BC%88%E9%A3%8E%E6%A0%BC%EF%BC%89"><span class="nav-number">2.1.1.</span> <span class="nav-text">RESTful 架构（风格）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gin%E6%B8%B2%E6%9F%93"><span class="nav-number">2.1.2.</span> <span class="nav-text">Gin渲染</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Go-%E6%A0%87%E5%87%86%E5%BA%93%E4%B9%8Bhttp-x2F-template"><span class="nav-number">2.2.</span> <span class="nav-text">Go 标准库之http&#x2F;template</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="nav-number">2.2.1.</span> <span class="nav-text">使用模板引擎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95"><span class="nav-number">2.2.2.</span> <span class="nav-text">模板语法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">问题记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Go-Web"><span class="nav-number">1.</span> <span class="nav-text">Go Web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.1.</span> <span class="nav-text">vscode 新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#About-Web"><span class="nav-number">1.2.</span> <span class="nav-text">About Web</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">快速搭建一个简单的服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gin-%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">Gin 框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gin-%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">Gin 框架介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RESTful-%E6%9E%B6%E6%9E%84%EF%BC%88%E9%A3%8E%E6%A0%BC%EF%BC%89"><span class="nav-number">2.1.1.</span> <span class="nav-text">RESTful 架构（风格）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gin%E6%B8%B2%E6%9F%93"><span class="nav-number">2.1.2.</span> <span class="nav-text">Gin渲染*</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0"><span class="nav-number">2.1.3.</span> <span class="nav-text">获取参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Go-%E6%A0%87%E5%87%86%E5%BA%93%E4%B9%8Bhttp-x2F-template"><span class="nav-number">2.2.</span> <span class="nav-text">Go 标准库之http&#x2F;template</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="nav-number">2.2.1.</span> <span class="nav-text">使用模板引擎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95"><span class="nav-number">2.2.2.</span> <span class="nav-text">模板语法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">问题记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol>
     </div>
 </div>
 
