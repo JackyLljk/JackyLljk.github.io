@@ -203,7 +203,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-02-25 22:49:55</span>
+        <span class="pc">2024-02-28 10:03:23</span>
     </span>
     
     
@@ -249,16 +249,16 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <blockquote>
-<p><strong>并查集用来快速（近乎O(1)）处理：</strong></p>
+                <p><strong>并查集用来快速（近乎O(1)）处理：</strong></p>
 <ol>
-<li>将两个集合合并（并）</li>
-<li>询问两个元素是否在一个集合当中（查）</li>
+<li><p>将两个集合合并（并）</p>
+</li>
+<li><p>询问两个元素是否在一个集合当中（查）</p>
+</li>
 </ol>
-</blockquote>
 <span id="more"></span>
 
-<p>基本原理：每个集合用一棵树来表示，树根的编号就是整个集合的编号</p>
+<h2 id="基础并查集"><a href="#基础并查集" class="headerlink" title="基础并查集"></a>基础并查集</h2><p>基本原理：每个集合用一棵树来表示，树根的编号就是整个集合的编号</p>
 <ul>
 <li>每个节点存储它的父节点，<code>p[x]</code>表示<code>x</code>的父节点</li>
 </ul>
@@ -268,7 +268,21 @@
 <li>路径压缩 △：遍历根节点后，将所有路径上的节点的父节点设置为根节点</li>
 <li>按秩合并</li>
 </ul>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/838/" >例题：836. 合并集合<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> p[N];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回x的祖宗节点 + 路径压缩（核心操作）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(p[x] != x)</span><br><span class="line">        p[x] = <span class="built_in">find</span>(p[x]);</span><br><span class="line">    <span class="keyword">return</span> p[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 每个节点的父节点都指向自己（即每个节点都初始化为根节点）</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        p[i] = i;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">        <span class="type">char</span> op;</span><br><span class="line">        <span class="type">int</span> a, b;</span><br><span class="line">        cin &gt;&gt; op &gt;&gt; a &gt;&gt; b;</span><br><span class="line">        <span class="comment">// 合并操作</span></span><br><span class="line">        <span class="keyword">if</span>(op == <span class="string">&#x27;M&#x27;</span>) </span><br><span class="line">            <span class="comment">// a集合的根节点的父亲指向b集合的根节点</span></span><br><span class="line">            p[<span class="built_in">find</span>(a)] = <span class="built_in">find</span>(b);</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">find</span>(a) == <span class="built_in">find</span>(b))</span><br><span class="line">                cout &lt;&lt; <span class="string">&quot;Yes&quot;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                cout &lt;&lt; <span class="string">&quot;No&quot;</span> &lt;&lt; endl;   </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/838/" >Acwing: 836. 合并集合<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h2><p><strong>扩展情况</strong>：维护一些额外信息（如：每个集合中元素个数）</p>
+<p><strong>连通块</strong>：</p>
+<p>只需保证根节点的size是有意义的</p>
+<p>合并集合的同时</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">size</span>(b) += <span class="built_in">size</span>(a);</span><br><span class="line">p[a] = p[b];</span><br></pre></td></tr></table></figure>
+
+<p>特判：a和b在同一个集合中时，不需要再次合并和更新size</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> p[N], num[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(p[x] != x)</span><br><span class="line">        p[x] = <span class="built_in">find</span>(p[x]);</span><br><span class="line">    <span class="keyword">return</span> p[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        p[i] = i;</span><br><span class="line">        num[i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">        string op;</span><br><span class="line">        <span class="type">int</span> a, b;</span><br><span class="line">        cin &gt;&gt; op;</span><br><span class="line">        <span class="keyword">if</span>(op == <span class="string">&quot;C&quot;</span>) &#123;</span><br><span class="line">            cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">            <span class="comment">// 需要特判</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">find</span>(a) == <span class="built_in">find</span>(b))</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="comment">// 记录被连通的根节点的集合数</span></span><br><span class="line">            num[<span class="built_in">find</span>(b)] += num[<span class="built_in">find</span>(a)];</span><br><span class="line">            p[<span class="built_in">find</span>(a)] = <span class="built_in">find</span>(b);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(op == <span class="string">&quot;Q1&quot;</span>) &#123;</span><br><span class="line">            cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">find</span>(a) == <span class="built_in">find</span>(b))</span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">&quot;No&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            cin &gt;&gt; a;</span><br><span class="line">            cout &lt;&lt; num[<span class="built_in">find</span>(a)] &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/839/" >Acwing: 连通块中点的数量<i class="fas fa-external-link-alt"></i></a></p>
+<p>练习题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/242/" >Acwing: 食物链<i class="fas fa-external-link-alt"></i></a></p>
+<p>维护每个节点到根节点的距离</p>
 
             </div>
 
@@ -294,13 +308,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/12/22/algo/cpp_for_algo/"
+                               href="/2023/12/15/algo/heap/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">面向算法的 Cpp 用法</span>
+                                <span class="post-nav-title-item">堆</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
@@ -310,10 +324,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/11/27/language/basic_go/"
+                               href="/2023/11/25/algo/linklist_stack_queue/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Go 基础学习</span>
+                                <span class="post-nav-title-item">数组模拟：单双链表/栈/队列 | 单调栈/队列</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -332,7 +346,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="nav-number">1.</span> <span class="nav-text">基础并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E5%BD%A2"><span class="nav-number">2.</span> <span class="nav-text">变形</span></a></li></ol>
     </div>
 </div>
 

@@ -9,7 +9,7 @@
     
     <title>
         
-            Go 要点理解 |
+            堆 |
         
         JKey Blog
     </title>
@@ -175,7 +175,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">Go 要点理解</span>
+                <span class="title-hover-animation">堆</span>
             </div>
 
             
@@ -197,13 +197,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2024-01-30 12:00:00</span>
-        <span class="mobile">2024-01-30 12:00</span>
+        <span class="pc">2023-12-15 12:00:00</span>
+        <span class="mobile">2023-12-15 12:00</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-02-27 15:37:07</span>
+        <span class="pc">2024-02-28 12:51:43</span>
     </span>
     
     
@@ -212,7 +212,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>&nbsp;
+                        <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>&nbsp;
                     </li>
                 
             </ul>
@@ -224,11 +224,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>&nbsp;
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/Go/">Go</a>&nbsp;
+                        | <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
                     </li>
                 
             </ul>
@@ -250,14 +250,61 @@
                 
 
                 <blockquote>
-<p>关于 Golang 部分知识点的补充理解</p>
+<p>手写一个堆</p>
 </blockquote>
 <span id="more"></span>
 
+<p>堆：（STL 堆也支持）</p>
+<ol>
+<li>插入一个数</li>
+<li>求集合中的最小值</li>
+<li>删除最小值</li>
+<li>删除任意一个元素</li>
+<li>修改任意一个元素</li>
+</ol>
+<p>堆是一颗完全二叉树</p>
+<p>性质：（小根堆）每个点小于等于左右儿子，根节点是最小元素</p>
+<p>对节点下标的性质</p>
+<p>堆的存储：用一维数组存储</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="/Users/jk/Desktop/Coding/myblog/source/_posts/algo/assets/image-20240228101246463.png"
+                      alt="image-20240228101246463" style="zoom:50%;" 
+                >
 
+<p>stl里的树是优先队列（priority queue）</p>
+<p><strong>堆的基本操作</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">down</span>(x);	<span class="comment">// 节点向下调整</span></span><br><span class="line"><span class="comment">// 和两个儿子比较，找最小值，和当前节点的值进行交换</span></span><br><span class="line"><span class="comment">// 直到满足标准堆</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">up</span>(x);		<span class="comment">// 节点向上调整</span></span><br><span class="line"><span class="comment">// 和父节点比较，如果更小，当前节点的值和父节点的值进行交换</span></span><br></pre></td></tr></table></figure>
 
-<p>数组，切片</p>
-<p>切片扩容策略：</p>
+<h4 id="实现堆的常用操作"><a href="#实现堆的常用操作" class="headerlink" title="实现堆的常用操作"></a>实现堆的常用操作</h4><p>size应该就是idx</p>
+<p>插入一个数：<code>heap[++size] = x; up(x);</code>（插入到最后一个节点，向上调整堆）logn</p>
+<p>求最小值：<code>heap[1]</code>o(1)</p>
+<p>删除堆顶（最小值）：最后一个元素覆盖堆顶元素，向下调整堆顶<code>heap[1] = heap[size];</code></p>
+<p><code>size--;	down(1);</code>logn</p>
+<p>删除最后一个元素：<code>size--;</code></p>
+<p>删除任意一个元素（第k个）：<code>heap[k] = heap[size]; size--; down(k); up(k);</code></p>
+<p>(up 和 down 只会执行一个，另一个判断后不会执行，简化判断都写一下)</p>
+<p>修改任意一个元素：<code>heap[k] = x; down(k); up(k);</code></p>
+<h4 id="O-N-的建堆方式："><a href="#O-N-的建堆方式：" class="headerlink" title="O(N) 的建堆方式："></a>O(N) 的建堆方式：</h4><p>从 <code>n/2</code>down到1（2&#x2F;n 的高度是1，即倒数第二层节点），如果从根开始就是O(NlogN)</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/Users/jk/Desktop/Coding/myblog/source/_posts/algo/assets/image-20240228104332957.png"
+                      alt="image-20240228104332957"
+                ></p>
+<p>例题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/840/" >Acwing: 堆排序<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m, num;</span><br><span class="line"><span class="type">int</span> h[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">down</span><span class="params">(<span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t = k;</span><br><span class="line">    <span class="keyword">if</span>(k*<span class="number">2</span> &lt;= num &amp;&amp; h[k*<span class="number">2</span>] &lt; h[t])</span><br><span class="line">        t = k * <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(k*<span class="number">2</span> + <span class="number">1</span> &lt;= num &amp;&amp; h[k*<span class="number">2</span> + <span class="number">1</span>] &lt; h[t])</span><br><span class="line">        t = k * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 加判断条件</span></span><br><span class="line">    <span class="keyword">if</span>(t != k) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(h[t], h[k]);</span><br><span class="line">        <span class="built_in">down</span>(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        cin &gt;&gt; h[i];</span><br><span class="line">    num = n;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// O(N) 的建堆方式</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = n/<span class="number">2</span>; i; i--)</span><br><span class="line">        <span class="built_in">down</span>(i);</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">        cout &lt;&lt; h[<span class="number">1</span>] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        h[<span class="number">1</span>] = h[num];</span><br><span class="line">        num--;</span><br><span class="line">        <span class="built_in">down</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也可以补充到排序部分，贴一个链接</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// up 操作</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">up</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// u/2 &gt; 0</span></span><br><span class="line">    <span class="keyword">while</span>(u/<span class="number">2</span> &amp;&amp; h[u/<span class="number">2</span>] &gt; h[u]) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(h[u/<span class="number">2</span>], h[u]);</span><br><span class="line">        u /= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例题：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/841/" >Acwing: 模拟堆<i class="fas fa-external-link-alt"></i></a>（带映射版堆）</p>
+<p>需要记录是第几个插入的点，更新堆的同时，要更新记录数组的内容（定义全新的交换操作）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 开两个额外的数组存第k个插入的数是什么</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">heap_swap</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">swap</span>(ph[hp[i]], ph[hp[j]]);</span><br><span class="line">    <span class="built_in">swap</span>(hp[i], hp[j]);</span><br><span class="line">    <span class="built_in">swap</span>(h[i], h[j]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 画个图理解</span></span><br></pre></td></tr></table></figure>
+
+<p>strcmp()</p>
+<p>代码链接：<a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/45305/" >https://www.acwing.com/activity/content/code/content/45305/<i class="fas fa-external-link-alt"></i></a></p>
 
             </div>
 
@@ -267,11 +314,11 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">#编程语言</a>&nbsp;
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/Go/">#Go</a>&nbsp;
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -280,14 +327,29 @@
             
                 <div class="article-nav">
                     
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/12/22/algo/cpp_for_algo/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">面向算法的 Cpp 用法</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2024/01/10/language/web_go/"
+                               href="/2023/12/10/algo/disjoint_set/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Go Web开发</span>
+                                <span class="post-nav-title-item">并查集</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -306,7 +368,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%A0%86%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">实现堆的常用操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-N-%E7%9A%84%E5%BB%BA%E5%A0%86%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">O(N) 的建堆方式：</span></a></li></ol>
     </div>
 </div>
 
