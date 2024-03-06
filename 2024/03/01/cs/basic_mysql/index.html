@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="JKey">
+    
+    <title>
+        
+            MySQL 常用操作 |
+        
+        JKey Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/Dango1.svg">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"jackylljk.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#99CCFF","logo":"/images/Dango.svg","favicon":"/images/Dango1.svg","avatar":"/images/dango_head.jpeg","font_size":null,"font_family":"STHeiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"header_transparent":true,"background_img":"/images/background.jpg","description":"前方没有高能，一切都是如期而至。","font_color":"white","hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["坂道邂逅","情有独钟","朝夕相伴","相濡以沫","雪原哀叹","汐去潮鸣","执手无悔","花田救赎"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/Dango.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               JKey Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">MySQL 常用操作</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/dango_head.jpeg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">JKey</span>
+                            
+                                <span class="author-label">朝夕相伴</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2024-03-01 12:00:00</span>
+        <span class="mobile">2024-03-01 12:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-03-06 17:05:38</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/cs/">cs</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <blockquote>
+<p>使用 MySQL 的常用命令和部分知识点补充</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="命令行使用MySQL"><a href="#命令行使用MySQL" class="headerlink" title="命令行使用MySQL"></a>命令行使用MySQL</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用密码在命令行登录 MySQL</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">mysql -u root -p</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">;结尾</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">获得帮助</span></span><br><span class="line"><span class="meta prompt_">mysql&gt; </span><span class="language-bash"><span class="built_in">help</span></span> </span><br><span class="line"><span class="meta prompt_">mysql&gt; </span><span class="language-bash">\h</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">退出命令行</span></span><br><span class="line"><span class="meta prompt_">mysql&gt; </span><span class="language-bash">quit</span></span><br><span class="line"><span class="meta prompt_">mysql&gt; </span><span class="language-bash"><span class="built_in">exit</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">control + d</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="MySQL-命令"><a href="#MySQL-命令" class="headerlink" title="MySQL 命令"></a>MySQL 命令</h2><blockquote>
+<p>书写习惯：</p>
+</blockquote>
+<h3 id="SHOW-查看-x2F-显示"><a href="#SHOW-查看-x2F-显示" class="headerlink" title="SHOW 查看&#x2F;显示"></a>SHOW 查看&#x2F;显示</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-- 查看数据库列表</span><br><span class="line">SHOW DATABASES;	</span><br><span class="line"></span><br><span class="line">-- 使用数据库 database_name</span><br><span class="line">USE database_name;	</span><br><span class="line"></span><br><span class="line">-- 查看数据库中表的列表</span><br><span class="line">SHOW TABLES;	</span><br><span class="line"></span><br><span class="line">-- 查看表各列结构</span><br><span class="line">SHOW COLUMNS FROM table_name;	</span><br><span class="line"></span><br><span class="line">-- 显示授权用户</span><br><span class="line">SHOW GRANTS;	</span><br><span class="line">-- 显示服务器错误</span><br><span class="line">SHOW ERRORS;	 </span><br><span class="line">-- 显示警告信息</span><br><span class="line">SHOW WARNINGS;	</span><br></pre></td></tr></table></figure>
+
+<h3 id="CREATE-创建表"><a href="#CREATE-创建表" class="headerlink" title="CREATE 创建表"></a>CREATE 创建表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">-- 可以使用反引号``将表名括起来，防止与MySQL关键字冲突</span><br><span class="line">CREATE TABLE tab_name (</span><br><span class="line">   col1 	col1_type 	NOT NULL,</span><br><span class="line">   col2 	INTEGER 	AUTOINCREMENT,</span><br><span class="line">   col3 	col3_type 	NOT NULL	DEFAULT 0,</span><br><span class="line">   .....</span><br><span class="line">   colN 	colN_type,</span><br><span class="line">   PRIMARY KEY (col1)	# 指定主键</span><br><span class="line">) ENGINE=InnoDB;</span><br><span class="line"></span><br><span class="line">/* </span><br><span class="line">常用类型：</span><br><span class="line">TEXT 字符串, CHAR(100) 固长字符串</span><br><span class="line">INTEGER 整型, BIGINT 长整型, REAL 实数, </span><br><span class="line">BOOL 布尔值</span><br><span class="line">BLOB 二进制</span><br><span class="line">DATETIME 时间 </span><br><span class="line">*/</span><br><span class="line">-- PRIMARY KEY 标记主键，NOT NULL标记非空</span><br><span class="line">-- AUTOINCREMENT 自增，只能用于整型</span><br><span class="line">-- DEFAULT 设置列默认值</span><br><span class="line">-- ENGINE=InnoDB 指定表使用的引擎</span><br></pre></td></tr></table></figure>
+
+<h3 id="DROP-x2F-ALTER-删除-x2F-更新表"><a href="#DROP-x2F-ALTER-删除-x2F-更新表" class="headerlink" title="DROP&#x2F;ALTER 删除&#x2F;更新表"></a>DROP&#x2F;ALTER 删除&#x2F;更新表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-- 删除表</span><br><span class="line">DROP TABLE tab_name;</span><br><span class="line"></span><br><span class="line">-- 新增列</span><br><span class="line">ALTER TABLE ADD COLUMNS col_name col_type;</span><br><span class="line"></span><br><span class="line">-- 重命名表</span><br><span class="line">ALTER TABLE old_tab RENAME TO new_tab</span><br><span class="line"></span><br><span class="line">-- 重命名列名(3.25.0+)</span><br><span class="line">ALTER TABLE tab_name RENAME COLUMN old_col TO new_col</span><br></pre></td></tr></table></figure>
+
+<h3 id="INSERT-新增记录"><a href="#INSERT-新增记录" class="headerlink" title="INSERT 新增记录"></a>INSERT 新增记录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-- 单条</span><br><span class="line">INSERT INTO tab_name VALUES (xx, xx)</span><br><span class="line"></span><br><span class="line">-- 指定列名（推荐）</span><br><span class="line">INSERT INTO tab_name (col1, col3) VALUES (xx, xx)</span><br><span class="line"></span><br><span class="line">-- 多条</span><br><span class="line">INSERT INTO tab_name (col1, col2, col3) VALUES</span><br><span class="line">    (xx, xx, xx),</span><br><span class="line">    ...</span><br><span class="line">    (xx, xx, xx);</span><br></pre></td></tr></table></figure>
+
+<h3 id="DELETE-x2F-UPDATE-删除-x2F-更新记录"><a href="#DELETE-x2F-UPDATE-删除-x2F-更新记录" class="headerlink" title="DELETE&#x2F;UPDATE 删除&#x2F;更新记录"></a>DELETE&#x2F;UPDATE 删除&#x2F;更新记录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- 删除满足条件的记录</span><br><span class="line">DELETE FROM tab_name WHERE [ condition ];</span><br><span class="line"></span><br><span class="line">-- 更新记录</span><br><span class="line">UPDATE tab_name SET col1=value1, col2=value2</span><br><span class="line"></span><br><span class="line">-- 更新满足条件的记录（推荐加上 WHERE）</span><br><span class="line">UPDATE tab_name</span><br><span class="line">    SET col1=value1, col2=value2</span><br><span class="line">    WHERE [ conditions ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="SELECT-查询"><a href="#SELECT-查询" class="headerlink" title="SELECT 查询"></a>SELECT 查询</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">-- 所有列，通配符*</span><br><span class="line">SELECT * FROM tab_name;</span><br><span class="line"></span><br><span class="line">-- DISTINCT 去除重复 </span><br><span class="line">SELECT DISTINCT col1 FROM tab_name;</span><br><span class="line"></span><br><span class="line">-- COUNT() 统计个数 </span><br><span class="line">SELECT COUNT(*) FROM tab_name</span><br><span class="line"></span><br><span class="line">-- 指定列，逗号分隔</span><br><span class="line">SELECT col1, col2 FROM table_name;</span><br><span class="line"></span><br><span class="line">-- 带查询条件 &gt;，&lt;，&lt;&gt;，!=，=，&lt;=，&gt;=，BETWEEN AND</span><br><span class="line">-- 操作符 AND，OR，IN，NOT</span><br><span class="line">SELECT * FROM table_name </span><br><span class="line">	WHERE col2 &gt;= 18 AND col1 &lt;&gt; 3;</span><br><span class="line">-- 空值判断 IS NULL</span><br><span class="line">SELECT column_name FROM table_name</span><br><span class="line">    WHERE column_name IS NULL;</span><br><span class="line">-- LIKE + 通配符（% 匹配字符串，_ 匹配单个字符）</span><br><span class="line">SELECT * FROM table_name</span><br><span class="line">    WHERE col2 &gt;= 18 AND col1 LIKE %stu%;</span><br><span class="line">    </span><br><span class="line">-- LIMIT 限制数量 </span><br><span class="line">SELECT * FROM table_name </span><br><span class="line">	LIMIT 1;</span><br><span class="line">SELECT * FROM table_name </span><br><span class="line">	LIMIT 4 OFFSET 3;	# 从下标为3行开始，取4行</span><br><span class="line">	</span><br><span class="line">-- GROUP BY 分组</span><br><span class="line">SELECT col1, count(*) FROM tab_name</span><br><span class="line">    WHERE [ conditions ]</span><br><span class="line">    GROUP BY col1</span><br><span class="line">    </span><br><span class="line">-- Having 过滤</span><br><span class="line">SELECT col1, count(*) FROM tab_name</span><br><span class="line">    WHERE [ conditions ]</span><br><span class="line">    GROUP BY col1</span><br><span class="line">    HAVING [ conditions ]</span><br><span class="line">    </span><br><span class="line">-- ORDER BY 排序, DESC 降序，ASC 升序，MySQL中&#x27;A&#x27;和&#x27;a&#x27;相同等级</span><br><span class="line">SELECT * FROM table_name </span><br><span class="line">	ORDER BY col2 DESC;</span><br><span class="line">	</span><br><span class="line">-- SELECT 子句顺序：SELECT - FROM - WHERE - GROUP BY - HAVING - ORDER BY - LIMIT</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-- AS 别名</span><br><span class="line">SELECT col1 AS c1, col2 AS c2</span><br><span class="line">	FROM table_name AS t;</span><br><span class="line">	</span><br><span class="line">-- 内联结，或使用 WHERE 方式内联结</span><br><span class="line">SELECT col1, col2</span><br><span class="line">	FROM table1 INNER JOIN tabel2;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Transaction-事务"><a href="#Transaction-事务" class="headerlink" title="Transaction 事务"></a>Transaction 事务</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 提交</span><br><span class="line">BEGIN;</span><br><span class="line">INSERT INTO ...</span><br><span class="line">...</span><br><span class="line">COMMIT; </span><br><span class="line">-- 回滚</span><br><span class="line">BEGIN;</span><br><span class="line">...</span><br><span class="line">ROLLBACK;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="基本概念名词"><a href="#基本概念名词" class="headerlink" title="基本概念名词"></a>基本概念名词</h2><p><code>SQL</code> 结构化查询语言（Structured Query Language）</p>
+<p><code>DBMS</code> 数据库管理系统（数据库软件）</p>
+<p><code>schema</code> 模式，关于数据库和表的布局及特性的信息</p>
+<p><code>column</code> 列，表中的一个字段</p>
+<p><code>row</code> 行，数据按行存储</p>
+<p><code>primary key</code> 主键，表中的一列或几列，<strong>唯一区分</strong>表中的每行，不同行主键不同，不允许<code>NULL</code></p>
+<p><code>*</code> 通配符</p>
+<p><code>table_name.column_name</code> 完全限定表名</p>
+<p><code>ACID</code> 事务具有原子性（Atomicity）、一致性（Consistency)、隔离性（Isolation）、持久性（Durability）四个标准属性</p>
+<h2 id="其他补充"><a href="#其他补充" class="headerlink" title="其他补充"></a>其他补充</h2><p><strong>1. MySQL 优缺点</strong></p>
+<ol>
+<li>成本：开发源代码，可以免费使用</li>
+<li>性能：执行快</li>
+<li>可信赖</li>
+<li>简单：容易安装和使用</li>
+</ol>
+<p><strong>2. 默认端口：3306</strong></p>
+<ul>
+<li>查看端口：<code>SHOW GLOBAL VARIABLES LIKE &#39;port&#39;</code></li>
+</ul>
+<p><strong>3. 创建不同表可以指定不同的引擎</strong></p>
+<ul>
+<li><code>InnoDB</code> 提供事务处理，不支持全文本搜索</li>
+<li><code>MEMORY </code>数据存储在内存（不是磁盘），适合临时表</li>
+<li><code>MyISAM</code> 高性能，支持全文本搜索，不支持事务处理</li>
+<li>注意：外键不能跨引擎</li>
+</ul>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/cs/">#cs</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2024/03/04/algo/golang_for_algo/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item"></span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/12/23/cs/OS/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">搞定操作系统</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2021</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">JKey</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//unpkg.com/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
